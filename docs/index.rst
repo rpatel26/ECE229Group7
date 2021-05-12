@@ -3,15 +3,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to ECE 229 Group 7 Insights into Mental Fatigue at Work's documentation!
+Welcome to ECE 229 Group 7's documentation!
 ================================================================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Contents:
+
    modules
-
-
 
 Indices and tables
 ==================

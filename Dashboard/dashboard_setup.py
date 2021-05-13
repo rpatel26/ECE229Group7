@@ -50,7 +50,7 @@ def main():
     
     st.write("## Using model to predict your burnout score")
     burnout_score = get_user_input()
-    st.write("Your predicted burnout score is (scale 1-10):",burnout_score)
+    st.write("Your predicted burnout score is (scale 0-1):",burnout_score)
 
 =======
 def main():

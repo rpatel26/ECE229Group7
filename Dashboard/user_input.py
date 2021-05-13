@@ -15,13 +15,12 @@ def get_user_input():
     then use model to predict score
     '''
     st.write('1. Do you have work from home setup available:')
-    whf_yes = st.checkbox('Yes')
-    whf_no = st.checkbox('No')
-    wfh = whf_yes + whf_no 
+    wfh_yes = st.radio('WFH setup available',['Yes','No'])
+    if wfh_yes == 'Yes':
+        wfh = 1
+    else:
+        wfh = 0
 
-    if wfh >1 or wfh <0 :
-        st.write('Wrong input: Select exactly one choice.')
-    
     #user_id = st.text_input("User ID")
     st.write('2. Designation of the employee of work in the organization (bigger is higher designation)')
     designation = st.slider(" Designation", 0, 5)

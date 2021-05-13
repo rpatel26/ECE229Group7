@@ -3,3 +3,4 @@
 catboost_info
 data
 *.png
+**/.DS_Store

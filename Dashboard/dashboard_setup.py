@@ -10,6 +10,7 @@ import plotly.figure_factory as ff
 import matplotlib.pyplot as plt
 from sidebar import * 
 from plots import * 
+from user_input import *
 
 def load_data():
     '''loads the data from the data subdirectory'''
@@ -39,6 +40,11 @@ def main():
 
     setup_male_female_avg_plot(train)
     setup_distribution_plot(train, fatigue_score, gender_options, designation, company_options, wfh_options)
+    
+    st.write("## Using model to predict your burnout score")
+    burnout_score = get_user_input()
+    st.write("Your predicted burnout score is (scale 1-10):",burnout_score)
+
 
 if __name__ == "__main__":
     main()

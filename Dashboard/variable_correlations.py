@@ -91,7 +91,7 @@ def setup_correlation_plots(data):
 
     f_3 = go.Bar(x=keys_1, y=values_p_value)
     fig.add_trace(f_3,row=1, col=2)
-    fig.update_layout(height=400, width=800, title_text="")
+    fig.update_layout(title_text="")
     fig.update_yaxes(title_text="Feature Importance", row=1, col=1)
     fig.update_yaxes(title_text="p-value", row=1, col=2)
     st.plotly_chart(fig)

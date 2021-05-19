@@ -1,5 +1,24 @@
 import plotly.express as px
 import streamlit as st
+import seaborn as sns
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_agg import RendererAgg
+
+def data_summary(df):
+    '''set up the data summary section'''
+    st.write('')
+    row0_spacer1, row0_1, row0_spacer2, row0_2, row0_spacer3 = st.beta_columns(
+    (.1, 2, .2, 1, .1))
+    with row0_1:
+        st.markdown(f"**Total Records:** {df.shape[0]}")
+        st.markdown(f"**Average Burn Rate:** " +\
+                    f"{df['Burn Rate'].mean()}")
+    
+    with row0_2:
+        st.markdown(f"**Highest Burn Rate:** {df['Burn Rate'].max()}")
+        st.markdown(f"**Lowest Burn Rate :** {df['Burn Rate'].min()}")
+
+    st.text("")
 
 def setup_male_female_avg_plot(train):
 
@@ -39,3 +58,39 @@ def setup_distribution_plot(train, fatigue_score, gender_options, designation, c
     st.write("Please use the sliders in the sidebar to adapt the following plot.")
     st.plotly_chart(f)
     
+def features_plot(df):
+    _lock = RendererAgg.lock
+    st.write('')
+    row0_spacer1, row0_1, row0_spacer2, row0_2, row0_spacer3 = st.beta_columns(
+    (.1, 2, .2, 1, .1))
+    row3_space1, row3_1, row3_space2, row3_2, row3_space3 = st.beta_columns(
+    (.1, 1, .1, 1, .1))
+  
+    row0_1.title("Visualize Important Features")
+
+    with row3_1, _lock:
+        
+        df_2 = df.groupby('Designation')['Mental Fatigue Score'].mean()
+    
+        st.subheader('Designation')
+        fig = Figure(figsize=(5, 3), dpi=60)
+        ax = fig.subplots()
+        sns.barplot(df_2.index,
+                    df_2.values, color='skyblue', ax=ax)
+        ax.set_xlabel('Designation')
+        ax.set_ylabel('Average Mental Fatigue Score')
+        st.pyplot(fig)
+
+
+
+    with row3_2, _lock:
+        df_2 = df.groupby('Resource Allocation')['Mental Fatigue Score'].mean()
+        st.subheader("Resource Allocation")
+        fig = Figure(figsize=(5, 3), dpi=60)
+        ax = fig.subplots()
+        sns.barplot(df_2.index,
+                    df_2.values, color='skyblue', ax=ax)
+        ax.set_xlabel('Resource Allocation')
+        ax.set_ylabel('Average Mental Fatigue Score')
+        st.pyplot(fig)
+

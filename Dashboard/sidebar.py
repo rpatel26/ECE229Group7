@@ -6,12 +6,12 @@ def setup_sidebar():
     if males or females were selected, selected industry type and selected work setup'''
 
     st.sidebar.write("Please select applicable settings.")
-    fatigue_score = st.sidebar.slider('Fatigure Score', 0., 10., (1., 9.))
+    fatigue_score = st.sidebar.slider('Fatigure Score', 0., 10., (0., 10.))
     gender_options = st.sidebar.selectbox(
         'Select Gender to be displayed',
         ('Male', 'Female', 'Both'))
 
-    designation = st.sidebar.slider('Designation', 0., 5., (1., 4.))
+    designation = st.sidebar.slider('Designation', 0., 5., (0., 5.))
 
     company_options = st.sidebar.selectbox(
         'Select Industry to be displayed',

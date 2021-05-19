@@ -12,6 +12,9 @@ import matplotlib.pyplot as plt
 from sidebar import * 
 from plots import * 
 from user_input import *
+from utils import * 
+from instructions import * 
+from variable_correlations import *
 
 def load_data():
     '''loads the data from the data subdirectory'''
@@ -65,19 +68,30 @@ def main():
     '''main function to set up the streamlit application visuals'''
     st.set_page_config(layout="wide")
     train = make_header()
+
     data_summary(train)  
-    features_plot(train)
+
     df = pd.DataFrame(train, columns = ['Mental Fatigue Score','Burn Rate'])
     df = df.rename(columns = {'Mental Fatigue Score': 'fatigue'}, inplace = False)
 
-    fatigue_score, gender_options, designation, company_options, wfh_options = setup_sidebar()
 
-    setup_male_female_avg_plot(train)
+    fatigue_score, gender_options, designation, company_options, wfh_options = setup_sidebar()
     setup_distribution_plot(train, fatigue_score, gender_options, designation, company_options, wfh_options)
-    
-    st.title("Using model to predict burn rate")
+
+    st.write("## Average Mental Fatigue Score by Gender")
+    setup_male_female_avg_plot(train)
+
+    setup_instruction_section_feature_analysis()
+    setup_correlation_plots(train)
+    features_plot(train)
+
+
+    setup_instruction_section_prediction()
     burnout_score = get_user_input()
     st.write("Your predicted burnout score is (scale 0-1):",burnout_score)
+
+
+    
 
 
 if __name__ == "__main__":

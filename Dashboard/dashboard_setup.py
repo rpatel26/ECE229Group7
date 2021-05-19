@@ -12,6 +12,9 @@ import matplotlib.pyplot as plt
 from sidebar import * 
 from plots import * 
 from user_input import *
+from utils import * 
+from instructions import * 
+from variable_correlations import *
 
 def load_data():
     '''loads the data from the data subdirectory'''
@@ -38,6 +41,13 @@ def make_header():
     with row1_1:
         st.markdown("Welcome to Employee Stress Analysis App. Our project team aims to predict, analyze and visualize how stressed employees in a company are, by looking at various metrics such as how long employees have been in the company, their work type, working hours, setups, benefits, etc. Give it a go!")
         st.markdown("**To begin, please upload your company's survey data (or just use our sample data!).** 👇")
+
+def main():
+    '''main function to set up the streamlit application visuals'''
+    st.title("Understanding Employee's Stress Level")
+    setup_instruction_section_exploration()
+
+    train = load_data()
 
     row2_spacer1, row2_1, row2_spacer2 = st.beta_columns((.1, 3.2, .1))
     with row2_1:
@@ -78,6 +88,13 @@ def main():
     st.title("Using model to predict burn rate")
     burnout_score = get_user_input()
     st.write("Your predicted burnout score is (scale 0-1):",burnout_score)
+
+
+    setup_instruction_section_feature_analysis()
+    setup_correlation_plots(train)
+
+    
+    setup_instruction_section_prediction()
 
 
 if __name__ == "__main__":

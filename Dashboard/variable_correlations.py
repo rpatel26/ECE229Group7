@@ -11,6 +11,11 @@ from plotly.subplots import make_subplots
 
 
 def get_correlations(train_data, dependent_variable="Mental Fatigue Score", method='pearson'):
+    '''calculates the feature importance for the dependent variables
+    param: train_data pandas dataframe
+    param: dependent_variable string indicating the column name of the dependent variable
+    method: string indicating the correlation calculation method. Needs to be one of {pearson, spearman, kendall}'''
+
     train_data.drop("Employee ID", inplace=True, axis=1)
     result = dict()
     result['continuous'] = dict()
@@ -26,6 +31,8 @@ def get_correlations(train_data, dependent_variable="Mental Fatigue Score", meth
     return result
 
 def setup_correlation_plots(data):
+    '''sets up bar plots for feature analysis with interactive widgets
+    param: data pandas dataframe'''
 
     st.write("## Continuous Features")
 

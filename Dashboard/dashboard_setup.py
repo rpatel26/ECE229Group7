@@ -81,7 +81,9 @@ def main():
     df = df.rename(columns = {'Mental Fatigue Score': 'fatigue'}, inplace = False)
 
     fatigue_score, gender_options, designation, company_options, wfh_options = setup_sidebar()
+    setup_distribution_plot(train, fatigue_score, gender_options, designation, company_options, wfh_options)
 
+    st.write("## Average Mental Fatigue Score by Gender")
     setup_male_female_avg_plot(train)
     setup_distribution_plot(train, fatigue_score, gender_options, designation, company_options, wfh_options)
     
@@ -89,11 +91,10 @@ def main():
     burnout_score = get_user_input()
     st.write("Your predicted burnout score is (scale 0-1):",burnout_score)
 
-
     setup_instruction_section_feature_analysis()
     setup_correlation_plots(train)
 
-    
+
     setup_instruction_section_prediction()
 
 

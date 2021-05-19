@@ -44,6 +44,7 @@ def setup_distribution_plot(train, fatigue_score, gender_options, designation, c
     param:  designation delected designation range from sidebar
     param:  company_options selected company options from sidebar 
     param:  wfh_options selected wfh options from sidebar '''
+    
     train_new = train
     train_new['fatigue'] = train_new["Mental Fatigue Score"]
     train_new['company'] = train_new["Company Type"]

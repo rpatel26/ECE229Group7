@@ -18,3 +18,13 @@ ECE229Group7
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. automodule:: Dashboard.variable_correlations
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: Dashboard.instructions
+   :members:
+   :undoc-members:
+   :show-inheritance:

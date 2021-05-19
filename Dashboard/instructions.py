@@ -4,10 +4,7 @@ def setup_instruction_section_exploration():
     '''This function sets up visual explanations on how to use our provided dashboards in the exploration section.'''
     st.write("""
     # 1. Data Explorations
-    We provide a gamut of data exploration plots, which you can adapt to your desire. This 
-    helps you to understand the dependencies between variables of mental fatigue and external factors.
-    """)
-    st.markdown("All explorations are based on a 2019  [study](https://www.kaggle.com/blurredmachine/are-your-employees-burning-out) of employee burnout rates. The goal of the study is to understand dependencies of burnout rates and external contributing factors A data snipped is shown as follows:" )
+    We provide a gamut of data exploration plots, which you can adapt to your desire.""")
 
 
 def setup_instruction_section_feature_analysis():

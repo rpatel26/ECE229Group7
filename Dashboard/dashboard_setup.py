@@ -41,6 +41,7 @@ def make_header():
     with row1_1:
         st.markdown("Welcome to Employee Stress Analysis App. Our project team aims to predict, analyze and visualize how stressed employees in a company are, by looking at various metrics such as how long employees have been in the company, their work type, working hours, setups, benefits, etc. Give it a go!")
         st.markdown("**To begin, please upload your company's survey data (or just use our sample data!).** 👇")
+        st.markdown("Our sample data is based on a 2019 [study](https://www.kaggle.com/blurredmachine/are-your-employees-burning-out) of employee burnout rates. The goal of the study is to understand dependencies of burnout rates and external contributing factors." )
 
     row2_spacer1, row2_1, row2_spacer2 = st.beta_columns((.1, 3.2, .1))
     with row2_1:
@@ -70,6 +71,8 @@ def main():
     train = make_header()
 
     data_summary(train)  
+    
+    setup_instruction_section_exploration()
 
     df = pd.DataFrame(train, columns = ['Mental Fatigue Score','Burn Rate'])
     df = df.rename(columns = {'Mental Fatigue Score': 'fatigue'}, inplace = False)

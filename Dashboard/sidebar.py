@@ -5,8 +5,6 @@ def setup_sidebar():
     returns: selected fatigue score and designation range, 
     if males or females were selected, selected industry type and selected work setup'''
 
-
-    st.write("## Exploration of Data Distribution")
     st.write("Please select applicable settings to see the data distribution for different data subsets.")
     fatigue_score = st.slider('Fatigure Score', 0., 10., (0., 10.))
     gender_options = st.selectbox(

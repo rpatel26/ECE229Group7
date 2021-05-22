@@ -96,6 +96,26 @@ def setup_correlation_plots(data):
     fig.update_yaxes(title_text="p-value", row=1, col=2)
     st.plotly_chart(fig)
 
+    if st.checkbox('Show Analysis'):
+        st.write("")
+        for i,key_name in enumerate(keys_1):
+            st.write('### %s' % key_name)
+            if values_p_value[i] > 0.05:
+                st.write("Based on the ANOVA result, there is no significant difference respect to %s" % key_name)
+            else:
+                feature_dict = data.groupby(key_name).agg('mean')["Mental Fatigue Score"].to_dict()
+                higher_v = 0
+                higher_k = 0
+                for k_dict, v_dict in feature_dict.items():
+                    st.write("The mean for %s is %f" % (k_dict,v_dict))
+                    if feature_dict[k_dict] > higher_v:
+                        higher_k = k_dict
+                        higher_v = feature_dict[k_dict]
+                st.write("So, based on these samples, we can say that %s == %s may "
+                         "lead to higher mental fatigue" % (key_name,higher_k))
+            st.write("")
+
+
 
 if __name__ == "__main__":
     train = load_data()

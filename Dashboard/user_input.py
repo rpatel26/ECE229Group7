@@ -12,7 +12,7 @@ def get_data():
 def get_user_input():
     '''
     setup the user inputs section and store inputs as dataframe
-    then use model to predict score
+    then use model to predict burnout rate
     '''
     st.write('1. Do you have work from home setup available:')
     wfh_yes = st.radio('WFH setup available',['Yes','No'])
@@ -33,11 +33,19 @@ def get_user_input():
         inputs.append({'WFH Setup Available':wfh,"Designation": designation,
                             "Resource Allocation": resource,'Mental Fatigue Score':fatigue})
 
-        filename = '../Model/linear_model.sav'
-        loaded_model = pickle.load(open(filename, 'rb'))
+
         xtest = pd.DataFrame(inputs)
-        result = float(loaded_model.predict(xtest)[0])
-        return result
+        #load trained tree model 
+        res = pd.DataFrame()
+        loaded_model1 = pickle.load(open('../Model/tree_model.sav', 'rb'))
+        res['point estimate'] = loaded_model1.predict(xtest)
+        loaded_model3 = pickle.load(open('../Model/tree_model_lower.sav', 'rb'))
+        res['interval lower bound'] = loaded_model3.predict(xtest)
+        loaded_model2 = pickle.load(open('../Model/tree_model_upper.sav', 'rb'))
+        res['interval upper bound'] = loaded_model2.predict(xtest)
+
+        res.reset_index(drop=True, inplace=True)
+        return res
 
         #st.write(pd.DataFrame(get_data()))
         #return pd.DataFrame(get_data())

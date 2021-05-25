@@ -16,9 +16,12 @@ from utils import *
 from instructions import * 
 from variable_correlations import *
 
-def load_data():
+def load_data(data_choice):
     '''loads the data from the data subdirectory'''
-    train = pd.read_csv('../data/train.csv')
+    if data_choice == 'Employee-Data-Sample-1':
+        train = pd.read_csv('../data/train.csv')
+    else: 
+        train = pd.read_csv('../data/train.csv')
     #remove missing values form last three coloms
     train = train.dropna(subset=['Resource Allocation','Mental Fatigue Score',
                              'Burn Rate']).reset_index(drop=True)
@@ -45,7 +48,7 @@ def make_header():
 
     row2_spacer1, row2_1, row2_spacer2 = st.beta_columns((.1, 3.2, .1))
     with row2_1:
-        default_username = st.selectbox("Select one of our sample data", ("Employee-Data-Sample-1","Employee-Data-Sample-2"))
+        data_choice = st.selectbox("Select one of our sample data", ("Employee-Data-Sample-1","Employee-Data-Sample-2"))
         st.markdown("**or**")
         user_input = st.text_input(
             "Input your own employee data file(csv) path here (e.g. https://github.com/rpatel26/ECE229Group7)")
@@ -54,11 +57,11 @@ def make_header():
             st.markdown("Having trouble loading your data file? Read the data fields template here https://github.com/rpatel26/ECE229Group7.")
 
         if not user_input:
-            df = load_data()
+            df = load_data(data_choice)
         else:
             try:
                 with open(user_input) as input:
-                    st.text(input.read())
+                    df = st.text(input.read())
             except FileNotFoundError:
                 st.error('File not found.')
         
@@ -86,16 +89,11 @@ def main():
 
     setup_instruction_section_feature_analysis()
     setup_correlation_plots(train)
-    features_plot(train)
 
 
     setup_instruction_section_prediction()
     burnout_score = get_user_input()
-    st.write("Your predicted burnout score is (scale 0-1):",burnout_score)
-
-
-    
-
+    st.write("Your predicted burnout score (scale 0-1) and 95% confidence interval:",burnout_score)
 
 if __name__ == "__main__":
     main()

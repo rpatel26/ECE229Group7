@@ -3,6 +3,7 @@ import scipy.stats as stats
 import pandas as pd 
 import plotly.express as px
 import numpy as np
+import seaborn as sn
 
 from utils import * 
 import matplotlib.pyplot as plt
@@ -114,6 +115,25 @@ def setup_correlation_plots(data):
                 st.write("So, based on these samples, we can say that %s == %s may "
                          "lead to higher mental fatigue" % (key_name,higher_k))
             st.write("")
+
+    st.write('## Confusion Matrix')
+    data_corr = data[['Gender', 'Company Type', 'WFH Setup Available', 'Designation',
+                      'Resource Allocation', 'Mental Fatigue Score','Burn Rate']].dropna()
+    data_corr.loc[data_corr['Gender'] == 'Male', 'Gender'] = 0
+    data_corr.loc[data_corr['Gender'] == 'Female', 'Gender'] = 1
+    data_corr.loc[data_corr['Company Type'] == 'Service', 'Company Type'] = 0
+    data_corr.loc[data_corr['Company Type'] == 'Product', 'Company Type'] = 1
+    data_corr.loc[data_corr['WFH Setup Available'] == 'No', 'WFH Setup Available'] = 0
+    data_corr.loc[data_corr['WFH Setup Available'] == 'Yes', 'WFH Setup Available'] = 1
+
+    data_corr[['Gender']] = data_corr[['Gender']].astype(int)
+    data_corr[['Company Type']] = data_corr[['Company Type']].astype(int)
+    data_corr[['WFH Setup Available']] = data_corr[['WFH Setup Available']].astype(int)
+    corrMatrix = data_corr.corr()
+    fig, ax = plt.subplots()
+    ax = sn.heatmap(corrMatrix, annot=True)
+    st.pyplot(fig)
+
 
 
 

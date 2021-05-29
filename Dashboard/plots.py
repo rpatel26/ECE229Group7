@@ -1,8 +1,13 @@
+from home_page import load_data
 import plotly.express as px
 import streamlit as st
 import seaborn as sns
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_agg import RendererAgg
+from instructions import * 
+from sidebar import * 
+import pandas as pd
+
 
 def data_summary(df):
     '''set up the data summary section'''
@@ -100,3 +105,16 @@ def features_plot(df):
         ax.set_ylabel('Average Mental Fatigue Score')
         st.pyplot(fig)
 
+def app():
+    train = load_data()
+    setup_instruction_section_exploration()
+
+    df = pd.DataFrame(train, columns = ['Mental Fatigue Score','Burn Rate'])
+    df = df.rename(columns = {'Mental Fatigue Score': 'fatigue'}, inplace = False)
+
+
+    fatigue_score, gender_options, designation, company_options, wfh_options = setup_sidebar()
+    setup_distribution_plot(train, fatigue_score, gender_options, designation, company_options, wfh_options)
+
+    st.write("## Average Mental Fatigue Score by Gender")
+    setup_male_female_avg_plot(train)

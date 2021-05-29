@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import pickle
 from instructions import * 
+import base64
 
 @st.cache(allow_output_mutation=True)
 
@@ -60,11 +61,11 @@ def predict(xtest,res):
     #load trained tree model 
     
     loaded_model1 = pickle.load(open('../Model/tree_model.sav', 'rb'))
-    res['point estimate'] = loaded_model1.predict(xtest)
+    res['Point Estimate'] = loaded_model1.predict(xtest)
     loaded_model3 = pickle.load(open('../Model/tree_model_lower.sav', 'rb'))
-    res['interval lower bound'] = loaded_model3.predict(xtest)
+    res['Interval Lower Bound'] = loaded_model3.predict(xtest)
     loaded_model2 = pickle.load(open('../Model/tree_model_upper.sav', 'rb'))
-    res['interval upper bound'] = loaded_model2.predict(xtest)
+    res['Interval Upper Bound'] = loaded_model2.predict(xtest)
 
     res.reset_index(drop=True, inplace=True)
     return res
@@ -87,10 +88,10 @@ def app():
         xtest = data_encoder(dataframe)
         xtest = xtest[cols]
         res = predict(xtest,dataframe)
-        st.markdown("With Predicted Burnout Rate")
-        st.write(res)
-    # user_input = st.text_input(
-    #     "Input your own employee data file(csv) path here (e.g. https://github.com/rpatel26/ECE229Group7)")
+        st.markdown("Predicted Burnout Rate per Employee:")
+        st.write(res[["Employee ID", "Point Estimate", 'Interval Lower Bound', 'Interval Upper Bound']])
+        tmp_download_link = download_link(res, 'Employee_Burnout_Predictions.csv', 'Download Burnout Predictions as CSV')
+        st.markdown(tmp_download_link, unsafe_allow_html=True)
     need_help = st.beta_expander('Need help? 👉')
     with need_help:
         st.markdown("Having trouble uploading your data file? Read the data fields template here https://github.com/rpatel26/ECE229Group7.")
@@ -98,3 +99,25 @@ def app():
 
     burnout_score = get_user_input()
     st.write("Your predicted burnout score (scale 0-1) and 95% confidence interval:",burnout_score)
+
+
+def download_link(object_to_download, download_filename, download_link_text):
+    """
+    Generates a link to download the given object_to_download.
+
+    object_to_download (str, pd.DataFrame):  The object to be downloaded.
+    download_filename (str): filename and extension of file. e.g. mydata.csv, some_txt_output.txt
+    download_link_text (str): Text to display for download link.
+
+    Examples:
+    download_link(YOUR_DF, 'YOUR_DF.csv', 'Click here to download data!')
+    download_link(YOUR_STRING, 'YOUR_STRING.txt', 'Click here to download your text!')
+
+    """
+    if isinstance(object_to_download,pd.DataFrame):
+        object_to_download = object_to_download.to_csv(index=False)
+
+    # some strings <-> bytes conversions necessary here
+    b64 = base64.b64encode(object_to_download.encode()).decode()
+
+    return f'<a href="data:file/txt;base64,{b64}" style="border-radius: 0.25rem;text-decoration:none; padding: 0.25rem 0.75rem;color:#1b4174; border: 1px solid #1b4174; border-radius: 5px;" download="{download_filename}">{download_link_text}</a>'

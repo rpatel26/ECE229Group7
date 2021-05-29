@@ -30,7 +30,7 @@ def setup_male_female_avg_plot(train):
     param: train input training dataframe'''
     average_male = train.query('Gender == \'Male\'',engine='python').mean()
     average_female = train.query('Gender == \'Female\'',engine='python').mean()
-    fig = px.bar([0,1], [average_male[2], average_female[2]])
+    fig = px.bar([0,1], [average_male[2], average_female[2]], color_discrete_sequence=px.colors.diverging.RdBu)
     fig.update_xaxes(title='Average Mental Fatigue Score')
     fig.update_yaxes(title='Gender')
     fig.update_layout(
@@ -65,9 +65,9 @@ def setup_distribution_plot(train, fatigue_score, gender_options, designation, c
         plot_query = plot_query + f' and wfh == \'{options}\''
 
     st.write("## Fatigue Score Distribution")
-    f = px.histogram(train_new.query(plot_query,engine='python'), x='Mental Fatigue Score', nbins=15)
+    f = px.histogram(train_new.query(plot_query,engine='python'), x='Mental Fatigue Score', nbins=15, color_discrete_sequence=px.colors.diverging.RdBu)
     f.update_xaxes(title='Mental Fatigue Score')
-    f.update_yaxes(title='Gender')
+    f.update_yaxes(title='Number of Instances')
     st.write("Please use the sliders in the sidebar to adapt the following plot.")
     st.plotly_chart(f)
     

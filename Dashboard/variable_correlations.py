@@ -34,7 +34,7 @@ def get_correlations(train_data, dependent_variable="Mental Fatigue Score", meth
 def setup_correlation_plots(data):
     '''sets up bar plots for feature analysis with interactive widgets
     param: data pandas dataframe'''
-
+    '''
     st.write("## Continuous Features")
 
     corr_options = st.selectbox(
@@ -115,8 +115,20 @@ def setup_correlation_plots(data):
                 st.write("So, based on these samples, we can say that %s == %s may "
                          "lead to higher mental fatigue" % (key_name,higher_k))
             st.write("")
-
+    '''
     st.write('## Confusion Matrix')
+    st.write('For feature analysis, we mainly provide confusion matrix for you to realize the correlation'
+             'between each of feature.')
+    st.write("For **Gender**, **Company Type**, and **WFH Setup Available**, we change its data type to value"
+             "which fits correlation analysis. Here is the default setting:")
+    st.write("**Gender**: male = 0, female = 1")
+    st.write("**Company Type**: Service = 0, Product = 1")
+    st.write("**WTF Setup Available**: No = 0, Yest = 1")
+    st.write("In the confusion matrix, each feature is listed in x and y axis. The value of the point "
+             "where each pair of features intersects represents the correlation of the pair of features"
+             "The value is between -1 to 1. Positive number means they are positively correlated."
+             "Negative numbers indicate that they are negatively correlated. The larger the absolute "
+             "value, the higher their correlation.")
     data_corr = data[['Gender', 'Company Type', 'WFH Setup Available', 'Designation',
                       'Resource Allocation', 'Mental Fatigue Score','Burn Rate']].dropna()
     data_corr.loc[data_corr['Gender'] == 'Male', 'Gender'] = 0

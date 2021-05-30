@@ -36,8 +36,6 @@ def get_user_input():
     if st.button("Submit"):
         inputs.append({'WFH Setup Available':wfh,"Designation": designation,
                             "Resource Allocation": resource,'Mental Fatigue Score':fatigue})
-
-
         xtest = pd.DataFrame(inputs)
         res_init = pd.DataFrame()
         res = predict(xtest,res_init)
@@ -75,7 +73,23 @@ def app():
     setup_instruction_section_prediction()
 
     st.markdown("In this page you can predict your employees' burnout rate using variables like Designation, WFH Setup Available etc. Give it a go!")
-    st.markdown("**To begin, please upload your company's survey data .** 👇")
+    st.markdown("## To predict the burnout score for one specific employee and "
+    "explore burnout mitigation strategies, please use the input section below.")
+
+    burnout_score = get_user_input()
+    st.write("The predicted burnout score for this setup (scale 0-1) and 95% confidence interval:",burnout_score)
+
+    print(burnout_score)
+    if isinstance(burnout_score, pd.DataFrame):
+        score_category, mitigation_strategies = get_mitigation_strategies(burnout_score["Point Estimate"][0])
+        st.write(f"The burnout score of this employee is **{score_category}**.")
+        st.write('Based on this classification, you can use the following **mitigation strategies**:')
+        st.write(
+        f"""
+        {mitigation_strategies}"""
+    )
+
+    st.markdown("## To get a burnout score prediction for all your employees, please upload your company's survey data.")
 
     uploaded_file = st.file_uploader("Choose a file to upload")
     if uploaded_file is not None:
@@ -95,10 +109,23 @@ def app():
     need_help = st.beta_expander('Need help? 👉')
     with need_help:
         st.markdown("Having trouble uploading your data file? Read the data fields template here https://github.com/rpatel26/ECE229Group7.")
-    st.markdown("**or just use the input section below to predict one record**")
+    
 
-    burnout_score = get_user_input()
-    st.write("Your predicted burnout score (scale 0-1) and 95% confidence interval:",burnout_score)
+def get_mitigation_strategies(burnout_score):
+    '''decides on mitigation strategy strings to be shown for a particular burnout score
+    param: burnout_score float
+    returns (string, string) categorical score of burnout and mitigation strategies '''
+    score = "Low" if burnout_score <= 0.3 else "High" if burnout_score >= 0.6 else "Medium"
+    strategies_low = "-   There is no immediate action necessary, congratulations."
+    strategies_medium = "-   Incorporate balancing mechanisms in the company structure, like sports or meditation.\n  -   Offer time-management workshops to help the employee manage their time better."
+    strategies_high = "-   Reduce the workload for the individual employee.\n -   Offer mental health services.\n -   Offer team building workshops to help employees raise their voice before burning out."
+    mitigation_strategies = strategies_low if burnout_score <= 0.3 else strategies_high if burnout_score >= 0.6 else strategies_medium
+    return score, mitigation_strategies
+
+
+
+
+
 
 
 def download_link(object_to_download, download_filename, download_link_text):

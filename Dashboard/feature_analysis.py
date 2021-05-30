@@ -36,18 +36,18 @@ def setup_correlation_plots(data):
     param: data pandas dataframe'''
     
     st.write('## Confusion Matrix')
-    st.write('For feature analysis, we mainly provide confusion matrix for you to realize the correlation'
-             'between each of feature.')
-    st.write("For **Gender**, **Company Type**, and **WFH Setup Available**, we change its data type to value"
-             "which fits correlation analysis. Here is the default setting:")
+    st.write('We provide a correlation confusion matrix for you to get insights into the importance of'
+             'different features for your employee\'s burnout rate.')
+    st.write("To observe Pearson correlations between categorical variables **Gender**, **Company Type**, and **WFH Setup Available**, we change its data type to a binary encoding"
+             "to fit the correlation analysis. Here is the default setting:")
     st.write("**Gender**: male = 0, female = 1")
     st.write("**Company Type**: Service = 0, Product = 1")
     st.write("**WTF Setup Available**: No = 0, Yest = 1")
-    st.write("In the confusion matrix, each feature is listed in x and y axis. The value of the point "
-             "where each pair of features intersects represents the correlation of the pair of features"
-             "The value is between -1 to 1. Positive number means they are positively correlated."
-             "Negative numbers indicate that they are negatively correlated. The larger the absolute "
-             "value, the higher their correlation.")
+    st.write("In the confusion matrix, each feature is listed in the x and y axis. The value of the point "
+             "where each pair of features intersects represents the correlation of the pair of features (indicated as z)"
+             "The value is between -1 to 1 and can be seen when hovered over the respective cell. A positive number means they are positively correlated."
+             "A negative number indicates that they are negatively correlated. The larger the absolute "
+             "value, the higher their correlation. This is also indicated by the respective color.")
     data_corr = data[['Gender', 'Company Type', 'WFH Setup Available', 'Designation',
                       'Resource Allocation', 'Mental Fatigue Score','Burn Rate']].dropna()
     data_corr.loc[data_corr['Gender'] == 'Male', 'Gender'] = 0
@@ -62,15 +62,23 @@ def setup_correlation_plots(data):
     data_corr[['WFH Setup Available']] = data_corr[['WFH Setup Available']].astype(int)
     corrMatrix = data_corr.corr()
 
-    pio.templates.default = "plotly_white"
+
+    hovertext = list()
+    print(np.array(corrMatrix), 'corrMatrix')
+    for yi, yy in enumerate(corrMatrix.columns):
+        hovertext.append(list())
+        for xi, xx in enumerate(corrMatrix.columns):
+            hovertext[-1].append('x: {}<br />y: {}<br />Correlation Coefficient: {}<br />p-value:'.format(xx, yy, np.array(corrMatrix)[yi][xi]))
+
 
     fig = make_subplots(rows=1, cols=1, subplot_titles=("Feature importance", "Statistical Significance"))
     f = go.Heatmap(
         z=corrMatrix,
         x=corrMatrix.columns,
         y=corrMatrix.columns,
-        hovertext=["Text A", "Text B", "Text C"],
         colorscale=px.colors.diverging.RdBu,
+        hoverinfo='text',
+        text=hovertext,
         zmin=-1,
         zmax=1
     )

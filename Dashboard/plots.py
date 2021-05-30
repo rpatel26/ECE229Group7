@@ -109,6 +109,16 @@ def app():
     train = load_data()
     setup_instruction_section_exploration()
 
+    uploaded_file = st.file_uploader("Choose a file to upload or explore our training data (default).")
+    if uploaded_file is not None:
+        train = pd.read_csv(uploaded_file)
+        train = train.dropna(subset=['Resource Allocation','Mental Fatigue Score']).reset_index(drop=True)
+        st.markdown("Input Survery Data")
+    
+    need_help = st.beta_expander('Need help? 👉')
+    with need_help:
+        st.markdown("Having trouble uploading your data file? Read the data fields template here https://github.com/rpatel26/ECE229Group7.")
+    
     df = pd.DataFrame(train, columns = ['Mental Fatigue Score','Burn Rate'])
     df = df.rename(columns = {'Mental Fatigue Score': 'fatigue'}, inplace = False)
 
@@ -116,5 +126,5 @@ def app():
     fatigue_score, gender_options, designation, company_options, wfh_options = setup_sidebar()
     setup_distribution_plot(train, fatigue_score, gender_options, designation, company_options, wfh_options)
 
-    st.write("## Average Mental Fatigue Score by Gender")
-    setup_male_female_avg_plot(train)
+    #st.write("## Average Mental Fatigue Score by Gender")
+    #setup_male_female_avg_plot(train)

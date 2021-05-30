@@ -64,7 +64,6 @@ def setup_correlation_plots(data):
 
 
     hovertext = list()
-    print(np.array(corrMatrix), 'corrMatrix')
     for yi, yy in enumerate(corrMatrix.columns):
         hovertext.append(list())
         for xi, xx in enumerate(corrMatrix.columns):
@@ -97,4 +96,3 @@ def app():
     train = load_data()
     setup_instruction_section_feature_analysis()
     setup_correlation_plots(train)
-    print(get_correlations(train))

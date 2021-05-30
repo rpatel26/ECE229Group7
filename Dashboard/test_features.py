@@ -13,8 +13,6 @@ def test_correlation():
     train_data.columns = ['Employee ID', 'feature_1', 'feature_2', 'Mental Fatigue Score']
     dependent_variable="Mental Fatigue Score"
     method='pearson'
-    print(train_data)
-    print(get_correlations(train_data, dependent_variable, method))
     assert get_correlations(train_data, dependent_variable, method) != 0
 
 if __name__ == "__main__":

@@ -45,9 +45,7 @@ def get_data():
     sample = pd.read_csv('../data/sample_submission.csv')
     #remove missing values form last three coloms
     train = train.dropna(subset=['Resource Allocation','Mental Fatigue Score','Burn Rate']).reset_index(drop=True)
-    #print('taining data shape:',train.shape)
-    #print('test data shape:',test.shape)
-    #print('sample data shape:',sample.shape)
+
     train_encoded = data_encoder(train)
     test_encoded = data_encoder(test)
     train_encoded = train_encoded.drop_duplicates(keep='first')  # dropping duplicates

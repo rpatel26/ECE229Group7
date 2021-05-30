@@ -67,7 +67,7 @@ def setup_correlation_plots(data):
     for yi, yy in enumerate(corrMatrix.columns):
         hovertext.append(list())
         for xi, xx in enumerate(corrMatrix.columns):
-            hovertext[-1].append('x: {}<br />y: {}<br />Correlation Coefficient: {}<br />p-value:'.format(xx, yy, np.array(corrMatrix)[yi][xi]))
+            hovertext[-1].append('x: {}<br />y: {}<br />Correlation Coefficient: {}'.format(xx, yy, np.array(corrMatrix)[yi][xi]))
 
 
     fig = make_subplots(rows=1, cols=1, subplot_titles=("Feature importance", "Statistical Significance"))

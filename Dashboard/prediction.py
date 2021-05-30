@@ -79,7 +79,6 @@ def app():
     burnout_score = get_user_input()
     st.write("The predicted burnout score for this setup (scale 0-1) and 95% confidence interval:",burnout_score)
 
-    print(burnout_score)
     if isinstance(burnout_score, pd.DataFrame):
         score_category, mitigation_strategies = get_mitigation_strategies(burnout_score["Point Estimate"][0])
         st.write(f"The burnout score of this employee is **{score_category}**.")

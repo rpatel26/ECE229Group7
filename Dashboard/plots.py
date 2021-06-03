@@ -117,7 +117,7 @@ def app():
     
     need_help = st.beta_expander('Need help? 👉')
     with need_help:
-        st.markdown("Having trouble uploading your data file? Read the data fields template here https://github.com/rpatel26/ECE229Group7.")
+        st.markdown("Having trouble uploading your data file? Refresh the page to restart uploading a file according to the fields template here https://github.com/rpatel26/ECE229Group7/blob/main/data_template.csv.")
     
     df = pd.DataFrame(train, columns = ['Mental Fatigue Score','Burn Rate'])
     df = df.rename(columns = {'Mental Fatigue Score': 'fatigue'}, inplace = False)

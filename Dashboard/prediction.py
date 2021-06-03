@@ -107,7 +107,7 @@ def app():
         st.markdown(tmp_download_link, unsafe_allow_html=True)
     need_help = st.beta_expander('Need help? 👉')
     with need_help:
-        st.markdown("Having trouble uploading your data file? Read the data fields template here https://github.com/rpatel26/ECE229Group7.")
+        st.markdown("Having trouble uploading your data file? Read the data fields template here https://github.com/rpatel26/ECE229Group7/blob/main/data_template.csv.")
     
 
 def get_mitigation_strategies(burnout_score):

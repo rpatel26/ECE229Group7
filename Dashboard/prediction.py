@@ -73,13 +73,12 @@ def app():
 
     setup_instruction_section_prediction()
 
-    st.markdown("In this page you can predict your employees' burnout rate using variables like Designation, WFH Setup Available etc. Give it a go!")
-    st.markdown("## To predict the burnout score for one specific employee and "
+    st.markdown("In this page you can predict your employees' burn rate using variables like Designation, WFH Setup Available etc. Give it a go!")
+    st.markdown("## To predict the burn rate for one specific employee and "
     "explore burnout mitigation strategies, please use the input section below.")
 
     burnout_score = get_user_input()
-    st.write("The predicted burnout score for this setup (scale 0-1) and 95% confidence interval:",burnout_score)
-
+    st.write("The predicted **burn rate** for this setup (scale 0-1) and **prediction interval** (based on 5% and 95% quantile regression):",burnout_score)
     if isinstance(burnout_score, pd.DataFrame):
         score_category, mitigation_strategies = get_mitigation_strategies(burnout_score["Point Estimate"][0])
         st.write(f"The burnout score of this employee is **{score_category}**.")
@@ -89,7 +88,7 @@ def app():
         {mitigation_strategies}"""
     )
 
-    st.markdown("## To get a burnout score prediction for all your employees, please upload your company's survey data.")
+    st.markdown("## To get burn rate prediction for all your employees, please upload your company's survey data.")
 
     uploaded_file = st.file_uploader("Choose a file to upload")
     if uploaded_file is not None:

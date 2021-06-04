@@ -7,6 +7,7 @@ from matplotlib.backends.backend_agg import RendererAgg
 from instructions import * 
 from sidebar import * 
 import pandas as pd
+from utils import * 
 
 
 def data_summary(df):
@@ -109,11 +110,15 @@ def app():
     train = load_data()
     setup_instruction_section_exploration()
 
-    uploaded_file = st.file_uploader("Choose a file to upload or explore our training data (default).")
+    uploaded_file = st.file_uploader("Choose a file to upload or explore our training data (default). Fallback to sample data.")
     if uploaded_file is not None:
         train = pd.read_csv(uploaded_file)
-        train = train.dropna(subset=['Resource Allocation','Mental Fatigue Score']).reset_index(drop=True)
-        st.markdown("Input Survery Data")
+        if not check_data_format(train):
+            wrong_data_format_message()
+            train = load_data()
+        else:
+            train = train.dropna(subset=['Resource Allocation','Mental Fatigue Score']).reset_index(drop=True)
+            st.markdown("Input Survery Data")
     
     need_help = st.beta_expander('Need help? 👉')
     with need_help:

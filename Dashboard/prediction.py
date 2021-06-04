@@ -4,6 +4,7 @@ import pandas as pd
 import pickle
 from instructions import * 
 import base64
+from utils import * 
 
 @st.cache(allow_output_mutation=True)
 
@@ -93,18 +94,20 @@ def app():
     uploaded_file = st.file_uploader("Choose a file to upload")
     if uploaded_file is not None:
         dataframe = pd.read_csv(uploaded_file)
-        st.markdown("Input Survery Data")
-        st.write(dataframe)
-
-        cols = ['WFH Setup Available','Designation','Resource Allocation',
-        'Mental Fatigue Score']
-        xtest = data_encoder(dataframe)
-        xtest = xtest[cols]
-        res = predict(xtest,dataframe)
-        st.markdown("Predicted Burnout Rate per Employee:")
-        st.write(res[["Employee ID", "Point Estimate", 'Interval Lower Bound', 'Interval Upper Bound']])
-        tmp_download_link = download_link(res, 'Employee_Burnout_Predictions.csv', 'Download Burnout Predictions as CSV')
-        st.markdown(tmp_download_link, unsafe_allow_html=True)
+        if not check_data_format(dataframe):
+            wrong_data_format_message()
+        else:
+            st.markdown("Input Survery Data")
+            st.write(dataframe)
+            cols = ['WFH Setup Available','Designation','Resource Allocation',
+            'Mental Fatigue Score']
+            xtest = data_encoder(dataframe)
+            xtest = xtest[cols]
+            res = predict(xtest,dataframe)
+            st.markdown("Predicted Burnout Rate per Employee:")
+            st.write(res[["Employee ID", "Point Estimate", 'Interval Lower Bound', 'Interval Upper Bound']])
+            tmp_download_link = download_link(res, 'Employee_Burnout_Predictions.csv', 'Download Burnout Predictions as CSV')
+            st.markdown(tmp_download_link, unsafe_allow_html=True)
     need_help = st.beta_expander('Need help? 👉')
     with need_help:
         st.markdown("Having trouble uploading your data file? Read the data fields template here https://github.com/rpatel26/ECE229Group7/blob/main/data_template.csv.")

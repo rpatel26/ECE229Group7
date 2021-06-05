@@ -1,6 +1,4 @@
-from variable_correlations import get_correlations
 import numpy as np
-import pytest
 import pandas as pd
 
 def test_correlation():

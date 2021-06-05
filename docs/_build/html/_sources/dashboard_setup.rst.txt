@@ -1,0 +1,7 @@
+dashboard\_setup module
+=======================
+
+.. automodule:: dashboard_setup
+   :members:
+   :undoc-members:
+   :show-inheritance:

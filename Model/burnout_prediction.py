@@ -37,8 +37,7 @@ warnings.filterwarnings('ignore')
 
 def get_data():
     '''
-    import dataset
-    download dataset and saved under folder "data" in working directory
+    Download dataset and saved under folder "data" in working directory
     '''
     train = pd.read_csv('../data/train.csv')
     test = pd.read_csv('../data/test.csv')
@@ -57,25 +56,28 @@ def get_data():
     cols = ['WFH Setup Available','Designation','Resource Allocation',
         'Mental Fatigue Score','Burn Rate']
     df =df_train[cols]
-    return df
+    return df,train_encoded
 
 
 def wfh_encoder(data):
+    '''
+    Function to encode variable "WFH Setup Available" as binary variable
+    '''
     if data["WFH Setup Available"] == "Yes":
         return 1
     return 0
 def data_encoder(df):
     '''
-    funtion to transform 3 categorical feature
+    Funtion to transform all categorical features into dummy variables
     '''
     df["WFH Setup Available"] = df.apply(wfh_encoder, axis=1)
     df = pd.get_dummies(data=df,columns=['Gender', 'Company Type'], drop_first=True)
     return df
 
-def eval_model(model, xtrain, xtest, ytrain, ytest):
+def evalu_model(model, xtrain, xtest, ytrain, ytest):
     '''
-    function to evaluate model performance through cross validation
-    using metrics r2 and mean squared error
+    Function to evaluate model performance through cross validation.
+    Metrics to evaluate performance: R-sqaured and mean squared error
     '''
     r2_train = cross_val_score(model,xtrain,ytrain,cv=5,scoring="r2").mean()
     r2_test = cross_val_score(model,xtest,ytest,cv=5,scoring="r2").mean()
@@ -85,16 +87,17 @@ def eval_model(model, xtrain, xtest, ytrain, ytest):
     print("r2 score for test: "+str(round(100*r2_test,2))+"%")
     print("MSE score for train: "+str(round(100*mse_train,2))+"%")
     print("MSE score for test: "+str(round(100*mse_test,2))+"%")
+    return r2_train,r2_test,mse_train,mse_test
 
 def linear_regression(xtrain, xtest, ytrain, ytest):
     '''
-    predict burnout rate using linear regression model
+    Predict burn rate using linear regression model
     '''
     lr = LinearRegression().fit(xtrain, ytrain)
     print('====================================')
     print('linear regression model performance:')
     print('====================================')
-    eval_model(lr, xtrain, xtest, ytrain, ytest)
+    evalu_model(lr, xtrain, xtest, ytrain, ytest)
 
     fi = [*zip(xtrain.columns, lr.coef_[0])]
     print('====================================')
@@ -107,11 +110,11 @@ def linear_regression(xtrain, xtest, ytrain, ytest):
     # pickle.dump(lr, open(filename, 'wb'))
     # loaded_model = pickle.load(open(filename, 'rb'))
     # result = loaded_model.predict(xtest)
+    return lr
 
 def tree_model(xtrain, xtest, ytrain, ytest):
     '''
-    predict burout rate using gradient boosting model
-    output both point estimation and predict interval
+    Predict burout rate using gradient boosting model output both point estimation and predict interval
     '''
     alpha = 0.95
 
@@ -144,12 +147,13 @@ def tree_model(xtrain, xtest, ytrain, ytest):
     print('====================================')
     print('tree model performance:')
     print('====================================')
-    eval_model(clf, xtrain, xtest, ytrain, ytest)
+    evalu_model(clf, xtrain, xtest, ytrain, ytest)
     filename = 'tree_model.sav'
     pickle.dump(clf, open(filename, 'wb'))
+    return clf
 
 if __name__=='__main__':
-    df = get_data()
+    df,_ = get_data()
     xtrain, xtest, ytrain, ytest = train_test_split(df.loc[:, df.columns != "Burn Rate"],
                                                 df.loc[:, df.columns == "Burn Rate"],
                                                 test_size=0.3, random_state=88)

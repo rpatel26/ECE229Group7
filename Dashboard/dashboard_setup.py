@@ -1,8 +1,3 @@
-'''
-This file intend to build a dashboard using streamlit to
-provide end user visualization and analysis.
-'''
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -19,6 +14,10 @@ import plots
 
 
 def main():
+    '''
+    This file intend to build a dashboard using streamlit to
+    provide end user visualization and analysis.
+    '''
     st.set_page_config(layout="wide")
     app = MultiApp()
     app.add_app("Home Page", home_page.app)

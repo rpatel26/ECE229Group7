@@ -11,6 +11,7 @@ Welcome to ECE 229 Group 7's documentation!
    :caption: Contents:
 
    modules
+   model_modules
 
 Indices and tables
 ==================

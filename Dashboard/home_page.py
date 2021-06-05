@@ -9,10 +9,6 @@ import numpy as np
 import time
 import plotly.figure_factory as ff
 import matplotlib.pyplot as plt
-from sidebar import * 
-from utils import * 
-from instructions import * 
-from multiapp import MultiApp
 
 
 def load_data():

@@ -125,10 +125,6 @@ def get_mitigation_strategies(burnout_score):
 
 
 
-
-
-
-
 def download_link(object_to_download, download_filename, download_link_text):
     """
     Generates a link to download the given object_to_download.

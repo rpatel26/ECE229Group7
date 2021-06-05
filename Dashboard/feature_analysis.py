@@ -5,7 +5,7 @@ import plotly.express as px
 import numpy as np
 import seaborn as sn
 from instructions import setup_instruction_section_feature_analysis
-from home_page import load_data
+from utils import load_data
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots

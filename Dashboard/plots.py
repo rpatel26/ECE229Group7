@@ -1,4 +1,3 @@
-from home_page import load_data
 import plotly.express as px
 import streamlit as st
 import seaborn as sns

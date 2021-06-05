@@ -1,0 +1,7 @@
+test\_prediction module
+=======================
+
+.. automodule:: test_prediction
+   :members:
+   :undoc-members:
+   :show-inheritance:

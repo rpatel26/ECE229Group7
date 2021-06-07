@@ -1,0 +1,4 @@
+name: project
+channels:
+  - defaults
+prefix: /opt/anaconda3/envs/project

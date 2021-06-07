@@ -1,13 +1,41 @@
-# ECE229Group7
-[Link](https://www.kaggle.com/blurredmachine/are-your-employees-burning-out) to the dataset.
+# ECE229Group7 Project
+This project build a informative interactive dashboard aims to predict, analyze and visualize how stressed employees in a company are, by looking at various metrics such as how long employees have been in the company, their work type, working hours, setups, benefits, etc. 
 
-An informative dashboard for visualizing mental fatigue distribution and predicting employee burnout.
 
-# Required Python Packages
-To run this you will need streamlit, plotly, numpy and Python 3.8
+# Table of Contents  
+1. [Folder Organization](#folder)
+2. [How to Run Code](#run)  
+3. [About Dataset](#data) 
 
-# Running the Dashboard
-To run the dashboard, you will need to navigate to the Dashboard directory and type the following command
-```
+
+<a name="folder"/></a>
+## Folder Organization
+1. **Model** : contains all **.py** files for data analysis and machine learning models, and **.ipynb** for all visualization
+2. **Dashboard** : contains all files for building dashboard
+3. **docs** : using Sphinx to create a documentation static website as an ongoing part of development.
+4. **environment.yml**: environment and dependency files
+
+
+<a name="run"/></a>
+## How to Run Code
+
+1. Reproduce environment using 
+<pre>
+conda env create -f environment.yml
+</pre>
+
+2. Download or git clone this github repository. 
+<pre>
+git clone https://github.com/rpatel26/ECE229Group7.git
+</pre>
+
+3. To run the dashboard, you will need to navigate to ./Dashboard directory and type the following command
+<pre>
 streamlit run dashboard_setup.py
-```
+</pre>
+
+<a name="data"/></a>
+## About Dataset: 
+[Link](https://www.kaggle.com/blurredmachine/are-your-employees-burning-out) to the dataset.
+We use the "Are your Employees Burning out" dataset found on Kaggle. This dataset contains 3 files, a training file, a testing file, and a sample submission file. The training and test files, it provides a mental fatigue score, which is the main attribute that reflects the stress level of employees. Additionally, the dataset provides if the employee works from home or not, company types, employee designation, and resource allocation, as well as the gender of the employee. We will train our model based on the training data and use our test data to validate our model. The dataset consists of 22750 training and 12250 test instances.
+

@@ -28,7 +28,12 @@ Additonally, ensure the necessay [dataset](https://www.kaggle.com/blurredmachine
 <a name="run"/></a>
 ## How to Run Code
 
-1. Install the necessay dependencies:
+1. Download or git clone this github repository. 
+<pre>
+git clone https://github.com/rpatel26/ECE229Group7.git
+</pre>
+
+2. Install the necessay dependencies:
 #### Using Anaconda
 <pre>
 conda env create -f environment.yml
@@ -38,10 +43,6 @@ conda env create -f environment.yml
 pip install -r requirements.txt
 </pre>
 
-2. Download or git clone this github repository. 
-<pre>
-git clone https://github.com/rpatel26/ECE229Group7.git
-</pre>
 
 3. To run the dashboard, you will need to navigate to ./Dashboard directory and type the following command
 <pre>

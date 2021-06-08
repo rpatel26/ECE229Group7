@@ -18,18 +18,24 @@ Additonally, ensure the necessay [dataset](https://www.kaggle.com/blurredmachine
 
 <a name="folder"/></a>
 ## Folder Organization
-1. **Model** : contains all **.py** files for data analysis and machine learning models, and **.ipynb** for all visualization
+1. **Model** : contains all **.py** files for data analysis and machine learning models, and **.ipynb** for all visualization.
 2. **Dashboard** : contains all files for building dashboard
 3. **docs** : using Sphinx to create a documentation static website as an ongoing part of development.
-4. **environment.yml**: environment and dependency files
-
+4. **data**: contails all the data used for training and testing of the regerssion model. After unzipping the [dataset](https://www.kaggle.com/blurredmachine/are-your-employees-burning-out/download), there should be four csv files: data_template.csv, sample_submission.csv, test.csv, and train.csv. 
+5. **environment.yml**: environment and dependency files.
+6. **requirements.txt**: dependencies for Python3 environment.
 
 <a name="run"/></a>
 ## How to Run Code
 
-1. Reproduce environment using 
+1. Install the necessay dependencies:
+#### Using Anaconda
 <pre>
 conda env create -f environment.yml
+</pre>
+#### Using Pip
+<pre>
+pip install -r requirements.txt
 </pre>
 
 2. Download or git clone this github repository. 

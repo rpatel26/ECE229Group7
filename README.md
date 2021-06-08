@@ -43,8 +43,9 @@ conda env create -f environment.yml
 pip install -r requirements.txt
 </pre>
 
+3. Install the necessary [dataset](https://www.kaggle.com/blurredmachine/are-your-employees-burning-out/download) and place it into the **data** directory. 
 
-3. To run the dashboard, you will need to navigate to ./Dashboard directory and type the following command
+4. To run the dashboard, you will need to navigate to ./Dashboard directory and type the following command
 <pre>
 streamlit run dashboard_setup.py
 </pre>

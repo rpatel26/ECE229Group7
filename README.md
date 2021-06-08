@@ -21,7 +21,7 @@ Additonally, ensure the necessay [dataset](https://www.kaggle.com/blurredmachine
 1. **Model** : contains all **.py** files for data analysis and machine learning models, and **.ipynb** for all visualization.
 2. **Dashboard** : contains all files for building dashboard
 3. **docs** : using Sphinx to create a documentation static website as an ongoing part of development.
-4. **data**: contails all the data used for training and testing of the regerssion model. After unzipping the [dataset](https://www.kaggle.com/blurredmachine/are-your-employees-burning-out/download), there should be four csv files: data_template.csv, sample_submission.csv, test.csv, and train.csv. 
+4. **data**: contails all the data used for training and testing of the regerssion model. After unzipping the [dataset](https://www.kaggle.com/blurredmachine/are-your-employees-burning-out/download), there should be three csv files: sample_submission.csv, test.csv, and train.csv. 
 5. **environment.yml**: environment and dependency files.
 6. **requirements.txt**: dependencies for Python3 environment.
 

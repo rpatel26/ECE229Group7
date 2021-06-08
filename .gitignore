@@ -5,3 +5,9 @@ data
 *.png
 **/.DS_Store
 __pycache__
+bin
+etc 
+lib
+pip-selfcheck.json
+pyvenv.cfg
+share

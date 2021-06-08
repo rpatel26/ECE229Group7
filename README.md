@@ -2,11 +2,19 @@
 This project build a informative interactive dashboard aims to predict, analyze and visualize how stressed employees in a company are, by looking at various metrics such as how long employees have been in the company, their work type, working hours, setups, benefits, etc. 
 
 
-# Table of Contents  
-1. [Folder Organization](#folder)
-2. [How to Run Code](#run)  
-3. [About Dataset](#data) 
+## Table of Contents  
+1. [Prerequisite](#prerequisite)
+2. [Folder Organization](#folder)
+3. [How to Run Code](#run)
+4. [About Dataset](#data)
 
+
+<a  name="prerequisite"/></a>
+## Prerequisite
+
+To run any of the module in this codebase, ensure the newest version of the [python3](https://www.python.org/downloads/) or the newest version of [Anaconda](https://docs.anaconda.com/anaconda/install/) installed in the machine. Further, ensure the respective binary is in the list of PATH variables. 
+
+Additonally, ensure the necessay [dataset](https://www.kaggle.com/blurredmachine/are-your-employees-burning-out/download) is downloaded and stored in the **data** directory. Refer to  [Folder Organization](#folder) for details on **data** directory. Note, the **data** directory is NOT part of this repository, it has to manually created. 
 
 <a name="folder"/></a>
 ## Folder Organization

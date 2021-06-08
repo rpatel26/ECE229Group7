@@ -11,6 +11,9 @@ from utils import *
 
 def data_summary(df):
     '''set up the data summary section'''
+
+    assert isinstance(df, pd.DataFrame)
+
     st.write('')
     row0_spacer1, row0_1, row0_spacer2, row0_2, row0_spacer3 = st.beta_columns(
     (.1, 2, .2, 1, .1))
@@ -28,6 +31,9 @@ def data_summary(df):
 def setup_male_female_avg_plot(train):
     '''sets up the plot for average gender fatigue score -- static for now, can be adapted for dymanic change
     param: train input training dataframe'''
+
+    assert isinstance(train, pd.DataFrame)
+
     average_male = train.query('Gender == \'Male\'',engine='python').mean()
     average_female = train.query('Gender == \'Female\'',engine='python').mean()
     fig = px.bar([0,1], [average_male[2], average_female[2]], color_discrete_sequence=px.colors.diverging.RdBu)
@@ -49,7 +55,18 @@ def setup_distribution_plot(train, fatigue_score, gender_options, designation, c
     param:  designation delected designation range from sidebar
     param:  company_options selected company options from sidebar 
     param:  wfh_options selected wfh options from sidebar '''
-    
+
+
+    assert isinstance(train, pd.DataFrame)
+    assert isinstance(gender_options, str)
+    assert isinstance(company_options, str)
+    assert isinstance(wfh_options, str)
+    assert isinstance(fatigue_score, tuple)
+    assert isinstance(designation, tuple)
+
+    assert len(fatigue_score) == 2
+    assert len(designation) == 2
+
     train_new = train
     train_new['fatigue'] = train_new["Mental Fatigue Score"]
     train_new['company'] = train_new["Company Type"]
@@ -72,6 +89,9 @@ def setup_distribution_plot(train, fatigue_score, gender_options, designation, c
     st.plotly_chart(f)
     
 def features_plot(df):
+
+    assert isinstance(df, pd.DataFrame)
+
     _lock = RendererAgg.lock
     st.write('')
     row0_spacer1, row0_1, row0_spacer2, row0_2, row0_spacer3 = st.beta_columns(

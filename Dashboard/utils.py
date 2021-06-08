@@ -9,6 +9,7 @@ def load_data():
     return train 
 
 def check_data_format(train):
+    assert isinstance(train, pd.DataFrame)
     required_cols = ['Employee ID',	'Date of Joining','Gender','Company Type','WFH Setup Available',
     'Designation','Resource Allocation','Mental Fatigue Score']
     for col in required_cols:

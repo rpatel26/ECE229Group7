@@ -15,7 +15,12 @@ def get_correlations(train_data, dependent_variable="Mental Fatigue Score", meth
     '''calculates the feature importance for the dependent variables
     param: train_data pandas dataframe
     param: dependent_variable string indicating the column name of the dependent variable
-    method: string indicating the correlation calculation method. Needs to be one of {pearson, spearman, kendall}'''
+    method: string indicating the correlation calculation method. Needs to be one of {pearson, spearman, kendall}
+    '''
+
+    assert isinstance(train_data, pd.DataFrame)
+    assert isinstance(dependent_variable, str)
+    assert isinstance(method, str)
 
     train_data.drop("Employee ID", inplace=True, axis=1)
     result = dict()
@@ -33,8 +38,11 @@ def get_correlations(train_data, dependent_variable="Mental Fatigue Score", meth
 
 def setup_correlation_plots(data):
     '''sets up bar plots for feature analysis with interactive widgets
-    param: data pandas dataframe'''
-    
+    param: data pandas dataframe
+    '''
+
+    assert isinstance(data, pd.DataFrame)
+
     st.write('## Confusion Matrix')
     st.write('We provide a correlation confusion matrix for you to get insights into the importance of '
              'different features for your employee\'s burnout rate.')

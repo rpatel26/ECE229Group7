@@ -63,6 +63,8 @@ def wfh_encoder(data):
     '''
     Function to encode variable "WFH Setup Available" as binary variable
     '''
+    assert isinstance(data, pd.Series)
+
     if data["WFH Setup Available"] == "Yes":
         return 1
     return 0
@@ -70,6 +72,8 @@ def data_encoder(df):
     '''
     Funtion to transform all categorical features into dummy variables
     '''
+    assert isinstance(df, pd.DataFrame)
+
     df["WFH Setup Available"] = df.apply(wfh_encoder, axis=1)
     df = pd.get_dummies(data=df,columns=['Gender', 'Company Type'], drop_first=True)
     return df
@@ -79,6 +83,11 @@ def evalu_model(model, xtrain, xtest, ytrain, ytest):
     Function to evaluate model performance through cross validation.
     Metrics to evaluate performance: R-sqaured and mean squared error
     '''
+    assert isinstance(xtrain, pd.DataFrame)
+    assert isinstance(xtest, pd.DataFrame)
+    assert isinstance(ytrain, pd.DataFrame)
+    assert isinstance(ytest, pd.DataFrame)
+
     r2_train = cross_val_score(model,xtrain,ytrain,cv=5,scoring="r2").mean()
     r2_test = cross_val_score(model,xtest,ytest,cv=5,scoring="r2").mean()
     mse_train = abs(cross_val_score(model,xtrain,ytrain,cv=5,scoring = "neg_mean_squared_error").mean())
@@ -93,6 +102,11 @@ def linear_regression(xtrain, xtest, ytrain, ytest):
     '''
     Predict burn rate using linear regression model
     '''
+    assert isinstance(xtrain, pd.DataFrame)
+    assert isinstance(xtest, pd.DataFrame)
+    assert isinstance(ytrain, pd.DataFrame)
+    assert isinstance(ytest, pd.DataFrame)
+
     lr = LinearRegression().fit(xtrain, ytrain)
     print('====================================')
     print('linear regression model performance:')
@@ -116,6 +130,11 @@ def tree_model(xtrain, xtest, ytrain, ytest):
     '''
     Predict burout rate using gradient boosting model output both point estimation and predict interval
     '''
+    assert isinstance(xtrain, pd.DataFrame)
+    assert isinstance(xtest, pd.DataFrame)
+    assert isinstance(ytrain, pd.DataFrame)
+    assert isinstance(ytest, pd.DataFrame)
+
     alpha = 0.95
 
     clf = GradientBoostingRegressor(loss='quantile', alpha=alpha,

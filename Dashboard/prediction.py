@@ -44,11 +44,15 @@ def get_user_input():
         return res
 
 def wfh_encoder(data):
+    assert isinstance(data, pd.Series)
+
     if data["WFH Setup Available"] == "Yes":
         return 1
     return 0
 
 def data_encoder(df):
+    assert isinstance(df, pd.DataFrame)
+
     df["WFH Setup Available"] = df.apply(wfh_encoder, axis=1)
     df = pd.get_dummies(data=df,columns=['Gender', 'Company Type'], drop_first=True)
     return df
@@ -57,6 +61,10 @@ def predict(xtest,res):
     '''
     predict burnout rate using user input data
     '''
+
+    assert isinstance(xtest, pd.DataFrame)
+    assert isinstance(res, pd.DataFrame)
+
     #load trained tree model 
     
     loaded_model1 = pickle.load(open('../Model/tree_model.sav', 'rb'))
@@ -116,6 +124,9 @@ def get_mitigation_strategies(burnout_score):
     '''decides on mitigation strategy strings to be shown for a particular burnout score
     param: burnout_score float
     returns (string, string) categorical score of burnout and mitigation strategies '''
+
+    assert isinstance(burnout_score, (int, float))
+
     score = "Low" if burnout_score <= 0.3 else "High" if burnout_score >= 0.6 else "Medium"
     strategies_low = "-   There is no immediate action necessary, congratulations."
     strategies_medium = "-   Incorporate balancing mechanisms in the company structure, like sports or meditation.\n  -   Offer time-management workshops to help the employee manage their time better."
@@ -138,6 +149,11 @@ def download_link(object_to_download, download_filename, download_link_text):
     download_link(YOUR_STRING, 'YOUR_STRING.txt', 'Click here to download your text!')
 
     """
+
+    assert isinstance(object_to_download, (pd.DataFrame, str))
+    assert isinstance(download_filename, str)
+    assert isinstance(download_link_text, str)
+
     if isinstance(object_to_download,pd.DataFrame):
         object_to_download = object_to_download.to_csv(index=False)
 

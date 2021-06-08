@@ -17,6 +17,8 @@ class MultiApp:
         title:
             title of the app. Appears in the dropdown in the sidebar.
         """
+        assert isinstance(title, str)
+
         self.apps.append({
             "title": title,
             "function": func

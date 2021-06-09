@@ -1,7 +1,0 @@
-test\_features module
-=====================
-
-.. automodule:: test_features
-   :members:
-   :undoc-members:
-   :show-inheritance:

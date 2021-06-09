@@ -29,10 +29,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -161,41 +161,59 @@
 <h1>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<span class="target" id="module-Model.burnout_prediction"></span><dl class="py function">
+<span class="target" id="module-Model.burnout_prediction"></span><dl class="function">
 <dt id="Model.burnout_prediction.data_encoder">
-<code class="sig-prename descclassname">Model.burnout_prediction.</code><code class="sig-name descname">data_encoder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.burnout_prediction.data_encoder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Funtion to transform all categorical features into dummy variables</p>
+<code class="sig-prename descclassname">Model.burnout_prediction.</code><code class="sig-name descname">data_encoder</code><span class="sig-paren">(</span><em class="sig-param">df</em><span class="sig-paren">)</span><a class="headerlink" href="#Model.burnout_prediction.data_encoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Funtion to transform all categorical features into dummy variables
+param: df pd.DataFrame</p>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="Model.burnout_prediction.evalu_model">
-<code class="sig-prename descclassname">Model.burnout_prediction.</code><code class="sig-name descname">evalu_model</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">xtrain</span></em>, <em class="sig-param"><span class="n">xtest</span></em>, <em class="sig-param"><span class="n">ytrain</span></em>, <em class="sig-param"><span class="n">ytest</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.burnout_prediction.evalu_model" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">Model.burnout_prediction.</code><code class="sig-name descname">evalu_model</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">xtrain</em>, <em class="sig-param">xtest</em>, <em class="sig-param">ytrain</em>, <em class="sig-param">ytest</em><span class="sig-paren">)</span><a class="headerlink" href="#Model.burnout_prediction.evalu_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to evaluate model performance through cross validation.
 Metrics to evaluate performance: R-sqaured and mean squared error</p>
+<p>param: model
+param: xtrain pd.DataFrame
+param: xtest pd.DataFrame
+param: ytrain pd.DataFrame
+param: ytest pd.DataFrame
+returns: tuple r2_train, r2_test, mse_train, mse_test floats</p>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="Model.burnout_prediction.get_data">
 <code class="sig-prename descclassname">Model.burnout_prediction.</code><code class="sig-name descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.burnout_prediction.get_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download dataset and saved under folder “data” in working directory</p>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="Model.burnout_prediction.linear_regression">
-<code class="sig-prename descclassname">Model.burnout_prediction.</code><code class="sig-name descname">linear_regression</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xtrain</span></em>, <em class="sig-param"><span class="n">xtest</span></em>, <em class="sig-param"><span class="n">ytrain</span></em>, <em class="sig-param"><span class="n">ytest</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.burnout_prediction.linear_regression" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predict burn rate using linear regression model</p>
+<code class="sig-prename descclassname">Model.burnout_prediction.</code><code class="sig-name descname">linear_regression</code><span class="sig-paren">(</span><em class="sig-param">xtrain</em>, <em class="sig-param">xtest</em>, <em class="sig-param">ytrain</em>, <em class="sig-param">ytest</em><span class="sig-paren">)</span><a class="headerlink" href="#Model.burnout_prediction.linear_regression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict burn rate using linear regression model
+param: xtrain pd.DataFrame
+param: xtest pd.DataFrame
+param: ytrain pd.DataFrame
+param: ytest pd.DataFrame</p>
+<p>returns: lr classifier</p>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="Model.burnout_prediction.tree_model">
-<code class="sig-prename descclassname">Model.burnout_prediction.</code><code class="sig-name descname">tree_model</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xtrain</span></em>, <em class="sig-param"><span class="n">xtest</span></em>, <em class="sig-param"><span class="n">ytrain</span></em>, <em class="sig-param"><span class="n">ytest</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.burnout_prediction.tree_model" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">Model.burnout_prediction.</code><code class="sig-name descname">tree_model</code><span class="sig-paren">(</span><em class="sig-param">xtrain</em>, <em class="sig-param">xtest</em>, <em class="sig-param">ytrain</em>, <em class="sig-param">ytest</em><span class="sig-paren">)</span><a class="headerlink" href="#Model.burnout_prediction.tree_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict burout rate using gradient boosting model output both point estimation and predict interval</p>
+<p>param: xtrain pd.DataFrame
+param: xtest pd.DataFrame
+param: ytrain pd.DataFrame
+param: ytest pd.DataFrame</p>
+<p>returns: treemodel classifier</p>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="Model.burnout_prediction.wfh_encoder">
-<code class="sig-prename descclassname">Model.burnout_prediction.</code><code class="sig-name descname">wfh_encoder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Model.burnout_prediction.wfh_encoder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function to encode variable “WFH Setup Available” as binary variable</p>
+<code class="sig-prename descclassname">Model.burnout_prediction.</code><code class="sig-name descname">wfh_encoder</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#Model.burnout_prediction.wfh_encoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to encode variable “WFH Setup Available” as binary variable
+param: data pd.DataFrame</p>
 </dd></dl>
 
 </div>

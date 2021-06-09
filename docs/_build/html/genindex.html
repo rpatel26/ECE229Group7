@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -29,10 +30,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -163,6 +164,7 @@
  | <a href="#G"><strong>G</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
@@ -174,10 +176,16 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules.html#Dashboard.multiapp.MultiApp.add_app">add_app() (Dashboard.multiapp.MultiApp method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules.html#Dashboard.home_page.app">app() (in module Dashboard.home_page)</a>
+      <li><a href="modules.html#Dashboard.feature_analysis.app">app() (in module Dashboard.feature_analysis)</a>
+
+      <ul>
+        <li><a href="modules.html#Dashboard.home_page.app">(in module Dashboard.home_page)</a>
 </li>
+        <li><a href="modules.html#Dashboard.plots.app">(in module Dashboard.plots)</a>
+</li>
+        <li><a href="modules.html#Dashboard.prediction.app">(in module Dashboard.prediction)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -192,44 +200,35 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    Dashboard.home_page
-
-      <ul>
-        <li><a href="modules.html#module-Dashboard.home_page">module</a>
+      <li><a href="modules.html#module-Dashboard.dashboard_setup">Dashboard.dashboard_setup (module)</a>
 </li>
-      </ul></li>
-      <li>
-    Dashboard.instructions
-
-      <ul>
-        <li><a href="modules.html#module-Dashboard.instructions">module</a>
+      <li><a href="modules.html#module-Dashboard.feature_analysis">Dashboard.feature_analysis (module)</a>
 </li>
-      </ul></li>
-      <li>
-    Dashboard.multiapp
-
-      <ul>
-        <li><a href="modules.html#module-Dashboard.multiapp">module</a>
+      <li><a href="modules.html#module-Dashboard.home_page">Dashboard.home_page (module)</a>
 </li>
-      </ul></li>
+      <li><a href="modules.html#module-Dashboard.instructions">Dashboard.instructions (module)</a>
+</li>
+      <li><a href="modules.html#module-Dashboard.multiapp">Dashboard.multiapp (module)</a>
+</li>
+      <li><a href="modules.html#module-Dashboard.plots">Dashboard.plots (module)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    Dashboard.sidebar
+      <li><a href="modules.html#module-Dashboard.prediction">Dashboard.prediction (module)</a>
+</li>
+      <li><a href="modules.html#module-Dashboard.sliders">Dashboard.sliders (module)</a>
+</li>
+      <li><a href="modules.html#module-Dashboard.utils">Dashboard.utils (module)</a>
+</li>
+      <li><a href="modules.html#Dashboard.prediction.data_encoder">data_encoder() (in module Dashboard.prediction)</a>
 
       <ul>
-        <li><a href="modules.html#module-Dashboard.sidebar">module</a>
+        <li><a href="model_modules.html#Model.burnout_prediction.data_encoder">(in module Model.burnout_prediction)</a>
 </li>
       </ul></li>
-      <li>
-    Dashboard.utils
-
-      <ul>
-        <li><a href="modules.html#module-Dashboard.utils">module</a>
+      <li><a href="modules.html#Dashboard.plots.data_summary">data_summary() (in module Dashboard.plots)</a>
 </li>
-      </ul></li>
-      <li><a href="model_modules.html#Model.burnout_prediction.data_encoder">data_encoder() (in module Model.burnout_prediction)</a>
+      <li><a href="modules.html#Dashboard.prediction.download_link">download_link() (in module Dashboard.prediction)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -245,7 +244,17 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="model_modules.html#Model.burnout_prediction.get_data">get_data() (in module Model.burnout_prediction)</a>
+      <li><a href="modules.html#Dashboard.prediction.get_data">get_data() (in module Dashboard.prediction)</a>
+
+      <ul>
+        <li><a href="model_modules.html#Model.burnout_prediction.get_data">(in module Model.burnout_prediction)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules.html#Dashboard.prediction.get_mitigation_strategies">get_mitigation_strategies() (in module Dashboard.prediction)</a>
+</li>
+      <li><a href="modules.html#Dashboard.prediction.get_user_input">get_user_input() (in module Dashboard.prediction)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -257,47 +266,31 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules.html#Dashboard.home_page.load_data">load_data() (in module Dashboard.home_page)</a>
-
-      <ul>
-        <li><a href="modules.html#Dashboard.utils.load_data">(in module Dashboard.utils)</a>
+      <li><a href="modules.html#Dashboard.utils.load_data">load_data() (in module Dashboard.utils)</a>
 </li>
-      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules.html#Dashboard.dashboard_setup.main">main() (in module Dashboard.dashboard_setup)</a>
+</li>
       <li><a href="modules.html#Dashboard.home_page.make_header">make_header() (in module Dashboard.home_page)</a>
 </li>
-      <li>
-    Model.burnout_prediction
-
-      <ul>
-        <li><a href="model_modules.html#module-Model.burnout_prediction">module</a>
-</li>
-      </ul></li>
-      <li>
-    module
-
-      <ul>
-        <li><a href="modules.html#module-Dashboard.home_page">Dashboard.home_page</a>
-</li>
-        <li><a href="modules.html#module-Dashboard.instructions">Dashboard.instructions</a>
-</li>
-        <li><a href="modules.html#module-Dashboard.multiapp">Dashboard.multiapp</a>
-</li>
-        <li><a href="modules.html#module-Dashboard.sidebar">Dashboard.sidebar</a>
-</li>
-        <li><a href="modules.html#module-Dashboard.utils">Dashboard.utils</a>
-</li>
-        <li><a href="model_modules.html#module-Model.burnout_prediction">Model.burnout_prediction</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="model_modules.html#module-Model.burnout_prediction">Model.burnout_prediction (module)</a>
+</li>
       <li><a href="modules.html#Dashboard.multiapp.MultiApp">MultiApp (class in Dashboard.multiapp)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules.html#Dashboard.prediction.predict">predict() (in module Dashboard.prediction)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -313,15 +306,21 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules.html#Dashboard.instructions.setup_instruction_section_exploration">setup_instruction_section_exploration() (in module Dashboard.instructions)</a>
+      <li><a href="modules.html#Dashboard.feature_analysis.setup_correlation_plots">setup_correlation_plots() (in module Dashboard.feature_analysis)</a>
 </li>
-      <li><a href="modules.html#Dashboard.instructions.setup_instruction_section_feature_analysis">setup_instruction_section_feature_analysis() (in module Dashboard.instructions)</a>
+      <li><a href="modules.html#Dashboard.plots.setup_distribution_plot">setup_distribution_plot() (in module Dashboard.plots)</a>
+</li>
+      <li><a href="modules.html#Dashboard.instructions.setup_instruction_section_exploration">setup_instruction_section_exploration() (in module Dashboard.instructions)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules.html#Dashboard.instructions.setup_instruction_section_feature_analysis">setup_instruction_section_feature_analysis() (in module Dashboard.instructions)</a>
+</li>
       <li><a href="modules.html#Dashboard.instructions.setup_instruction_section_prediction">setup_instruction_section_prediction() (in module Dashboard.instructions)</a>
 </li>
-      <li><a href="modules.html#Dashboard.sidebar.setup_sidebar">setup_sidebar() (in module Dashboard.sidebar)</a>
+      <li><a href="modules.html#Dashboard.sliders.setup_interaction_items">setup_interaction_items() (in module Dashboard.sliders)</a>
+</li>
+      <li><a href="modules.html#Dashboard.plots.setup_male_female_avg_plot">setup_male_female_avg_plot() (in module Dashboard.plots)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -337,8 +336,12 @@
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="model_modules.html#Model.burnout_prediction.wfh_encoder">wfh_encoder() (in module Model.burnout_prediction)</a>
+      <li><a href="modules.html#Dashboard.prediction.wfh_encoder">wfh_encoder() (in module Dashboard.prediction)</a>
+
+      <ul>
+        <li><a href="model_modules.html#Model.burnout_prediction.wfh_encoder">(in module Model.burnout_prediction)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules.html#Dashboard.utils.wrong_data_format_message">wrong_data_format_message() (in module Dashboard.utils)</a>

@@ -1,7 +1,0 @@
-feature\_analysis module
-========================
-
-.. automodule:: feature_analysis
-   :members:
-   :undoc-members:
-   :show-inheritance:

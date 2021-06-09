@@ -29,10 +29,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -162,87 +162,205 @@
 <h1>Dashboard<a class="headerlink" href="#dashboard" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<span class="target" id="module-Dashboard.sidebar"></span><dl class="py function">
-<dt id="Dashboard.sidebar.setup_sidebar">
-<code class="sig-prename descclassname">Dashboard.sidebar.</code><code class="sig-name descname">setup_sidebar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.sidebar.setup_sidebar" title="Permalink to this definition">¶</a></dt>
-<dd><p>sets up the sidebar elements for streamlit
-returns: selected fatigue score and designation range,
-if males or females were selected, selected industry type and selected work setup</p>
-</dd></dl>
-
-<span class="target" id="module-Dashboard.utils"></span><dl class="py function">
-<dt id="Dashboard.utils.check_data_format">
-<code class="sig-prename descclassname">Dashboard.utils.</code><code class="sig-name descname">check_data_format</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">train</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.utils.check_data_format" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="Dashboard.utils.load_data">
-<code class="sig-prename descclassname">Dashboard.utils.</code><code class="sig-name descname">load_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.utils.load_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>loads the data from the data subdirectory</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="Dashboard.utils.wrong_data_format_message">
-<code class="sig-prename descclassname">Dashboard.utils.</code><code class="sig-name descname">wrong_data_format_message</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.utils.wrong_data_format_message" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<span class="target" id="module-Dashboard.instructions"></span><dl class="py function">
-<dt id="Dashboard.instructions.setup_instruction_section_exploration">
-<code class="sig-prename descclassname">Dashboard.instructions.</code><code class="sig-name descname">setup_instruction_section_exploration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.instructions.setup_instruction_section_exploration" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function sets up visual explanations on how to use our provided dashboards in the exploration section.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="Dashboard.instructions.setup_instruction_section_feature_analysis">
-<code class="sig-prename descclassname">Dashboard.instructions.</code><code class="sig-name descname">setup_instruction_section_feature_analysis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.instructions.setup_instruction_section_feature_analysis" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function sets up visual explanations on how to use our provided dashboard in the prediction section.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="Dashboard.instructions.setup_instruction_section_prediction">
-<code class="sig-prename descclassname">Dashboard.instructions.</code><code class="sig-name descname">setup_instruction_section_prediction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.instructions.setup_instruction_section_prediction" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function sets up visual explanations on how to use our provided dashboard in the prediction section.</p>
-</dd></dl>
-
-<span class="target" id="module-Dashboard.home_page"></span><p>This file intend to build a dashboard using streamlit to
+<span class="target" id="module-Dashboard.dashboard_setup"></span><dl class="function">
+<dt id="Dashboard.dashboard_setup.main">
+<code class="sig-prename descclassname">Dashboard.dashboard_setup.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.dashboard_setup.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>This file intends to build a dashboard using streamlit to
 provide end user visualization and analysis.</p>
-<dl class="py function">
+</dd></dl>
+
+<span class="target" id="module-Dashboard.feature_analysis"></span><dl class="function">
+<dt id="Dashboard.feature_analysis.app">
+<code class="sig-prename descclassname">Dashboard.feature_analysis.</code><code class="sig-name descname">app</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.feature_analysis.app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build function for multi page streamlit aaplication - feature analysis section
+loads the data, sets up the instruction section and correlation plots</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Dashboard.feature_analysis.setup_correlation_plots">
+<code class="sig-prename descclassname">Dashboard.feature_analysis.</code><code class="sig-name descname">setup_correlation_plots</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.feature_analysis.setup_correlation_plots" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets up bar plots for feature analysis with interactive widgets
+param: data pandas dataframe</p>
+</dd></dl>
+
+<span class="target" id="module-Dashboard.home_page"></span><dl class="function">
 <dt id="Dashboard.home_page.app">
 <code class="sig-prename descclassname">Dashboard.home_page.</code><code class="sig-name descname">app</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.home_page.app" title="Permalink to this definition">¶</a></dt>
-<dd><p>main function to set up the streamlit application visuals</p>
+<dd><p>main function to set up the streamlit application visuals on the home page</p>
 </dd></dl>
 
-<dl class="py function">
-<dt id="Dashboard.home_page.load_data">
-<code class="sig-prename descclassname">Dashboard.home_page.</code><code class="sig-name descname">load_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.home_page.load_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>loads the data from the data subdirectory</p>
-</dd></dl>
-
-<dl class="py function">
+<dl class="function">
 <dt id="Dashboard.home_page.make_header">
 <code class="sig-prename descclassname">Dashboard.home_page.</code><code class="sig-name descname">make_header</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.home_page.make_header" title="Permalink to this definition">¶</a></dt>
 <dd><p>setup header section and allow user to select/input data file for analysis</p>
 </dd></dl>
 
-<span class="target" id="module-Dashboard.multiapp"></span><dl class="py class">
+<span class="target" id="module-Dashboard.instructions"></span><dl class="function">
+<dt id="Dashboard.instructions.setup_instruction_section_exploration">
+<code class="sig-prename descclassname">Dashboard.instructions.</code><code class="sig-name descname">setup_instruction_section_exploration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.instructions.setup_instruction_section_exploration" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function sets up visual explanations on how to use our provided dashboards in the exploration section.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Dashboard.instructions.setup_instruction_section_feature_analysis">
+<code class="sig-prename descclassname">Dashboard.instructions.</code><code class="sig-name descname">setup_instruction_section_feature_analysis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.instructions.setup_instruction_section_feature_analysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function sets up visual explanations on how to use our provided dashboard in the prediction section.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Dashboard.instructions.setup_instruction_section_prediction">
+<code class="sig-prename descclassname">Dashboard.instructions.</code><code class="sig-name descname">setup_instruction_section_prediction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.instructions.setup_instruction_section_prediction" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function sets up visual explanations on how to use our provided dashboard in the prediction section.</p>
+</dd></dl>
+
+<span class="target" id="module-Dashboard.multiapp"></span><dl class="class">
 <dt id="Dashboard.multiapp.MultiApp">
 <em class="property">class </em><code class="sig-prename descclassname">Dashboard.multiapp.</code><code class="sig-name descname">MultiApp</code><a class="headerlink" href="#Dashboard.multiapp.MultiApp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Frameworks for running multiple Streamlit applications as a single app.
 referrencing <a class="reference external" href="https://github.com/upraneelnihar/streamlit-multiapps">https://github.com/upraneelnihar/streamlit-multiapps</a></p>
-<dl class="py method">
+<dl class="method">
 <dt id="Dashboard.multiapp.MultiApp.add_app">
-<code class="sig-name descname">add_app</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.multiapp.MultiApp.add_app" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_app</code><span class="sig-paren">(</span><em class="sig-param">title</em>, <em class="sig-param">func</em><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.multiapp.MultiApp.add_app" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a new application.
 :param func: the python function to render this app.
 :param title: title of the app. Appears in the dropdown in the sidebar.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="Dashboard.multiapp.MultiApp.run">
 <code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.multiapp.MultiApp.run" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<span class="target" id="module-Dashboard.plots"></span><dl class="function">
+<dt id="Dashboard.plots.app">
+<code class="sig-prename descclassname">Dashboard.plots.</code><code class="sig-name descname">app</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.plots.app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build function for multi page streamlit aaplication - exploration section
+loads the data, sets up UI explanations and deals with file uploads</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Dashboard.plots.data_summary">
+<code class="sig-prename descclassname">Dashboard.plots.</code><code class="sig-name descname">data_summary</code><span class="sig-paren">(</span><em class="sig-param">df</em><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.plots.data_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>set up the data summary section
+param: df pandas DataFrame</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Dashboard.plots.setup_distribution_plot">
+<code class="sig-prename descclassname">Dashboard.plots.</code><code class="sig-name descname">setup_distribution_plot</code><span class="sig-paren">(</span><em class="sig-param">train</em>, <em class="sig-param">fatigue_score</em>, <em class="sig-param">gender_options</em>, <em class="sig-param">designation</em>, <em class="sig-param">company_options</em>, <em class="sig-param">wfh_options</em><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.plots.setup_distribution_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets up a plot that is controlled with the sidepanels to control the distribution of the data in a histogram
+param: train training data dataframe
+param: fatigue_score slider value of fatigue score
+param:  gender_options selected gender options from sidebar
+param:  designation delected designation range from sidebar
+param:  company_options selected company options from sidebar
+param:  wfh_options selected wfh options from sidebar</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Dashboard.plots.setup_male_female_avg_plot">
+<code class="sig-prename descclassname">Dashboard.plots.</code><code class="sig-name descname">setup_male_female_avg_plot</code><span class="sig-paren">(</span><em class="sig-param">train</em><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.plots.setup_male_female_avg_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets up the plot for average gender fatigue score – static for now, can be adapted for dymanic change
+param: train input training dataframe</p>
+</dd></dl>
+
+<span class="target" id="module-Dashboard.prediction"></span><dl class="function">
+<dt id="Dashboard.prediction.app">
+<code class="sig-prename descclassname">Dashboard.prediction.</code><code class="sig-name descname">app</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.prediction.app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Application function for the prediction section - sets up instructions, model and handles file uploads</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Dashboard.prediction.data_encoder">
+<code class="sig-prename descclassname">Dashboard.prediction.</code><code class="sig-name descname">data_encoder</code><span class="sig-paren">(</span><em class="sig-param">df</em><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.prediction.data_encoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies binary encoding to entire dataframe
+param: data pandas Dataframe with column “WFH Setup Available
+returns: encoded pd.DataFrame with binary encoded categorical variables</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Dashboard.prediction.download_link">
+<code class="sig-prename descclassname">Dashboard.prediction.</code><code class="sig-name descname">download_link</code><span class="sig-paren">(</span><em class="sig-param">object_to_download</em>, <em class="sig-param">download_filename</em>, <em class="sig-param">download_link_text</em><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.prediction.download_link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a link to download the given object_to_download.</p>
+<p>object_to_download (str, pd.DataFrame):  The object to be downloaded.
+download_filename (str): filename and extension of file. e.g. mydata.csv, some_txt_output.txt
+download_link_text (str): Text to display for download link.</p>
+<p>Examples:
+download_link(YOUR_DF, ‘YOUR_DF.csv’, ‘Click here to download data!’)
+download_link(YOUR_STRING, ‘YOUR_STRING.txt’, ‘Click here to download your text!’)</p>
+<p>param: object_to_download pd.DataFrame
+param: download_filename String
+param: download_link_text String
+returns: HTML String</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Dashboard.prediction.get_data">
+<code class="sig-prename descclassname">Dashboard.prediction.</code><code class="sig-name descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.prediction.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>used for store multiple user input</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Dashboard.prediction.get_mitigation_strategies">
+<code class="sig-prename descclassname">Dashboard.prediction.</code><code class="sig-name descname">get_mitigation_strategies</code><span class="sig-paren">(</span><em class="sig-param">burnout_score</em><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.prediction.get_mitigation_strategies" title="Permalink to this definition">¶</a></dt>
+<dd><p>decides on mitigation strategy strings to be shown for a particular burnout score
+param: burnout_score float
+returns: (string, string) categorical score of burnout and mitigation strategies</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Dashboard.prediction.get_user_input">
+<code class="sig-prename descclassname">Dashboard.prediction.</code><code class="sig-name descname">get_user_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.prediction.get_user_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>setup the user inputs section and store inputs as dataframe
+then use model to predict burnout rate</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Dashboard.prediction.predict">
+<code class="sig-prename descclassname">Dashboard.prediction.</code><code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">xtest</em>, <em class="sig-param">res</em><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.prediction.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>predict burnout rate using user input data
+param: xtest pd.DataFrame
+param: res pd.DataFrame
+returns: pd.DataFrame</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Dashboard.prediction.wfh_encoder">
+<code class="sig-prename descclassname">Dashboard.prediction.</code><code class="sig-name descname">wfh_encoder</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.prediction.wfh_encoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encodes the WFH setup to Binary
+param: data pandas Dataframe with column “WFH Setup Available”
+returns: Bool</p>
+</dd></dl>
+
+<span class="target" id="module-Dashboard.sliders"></span><dl class="function">
+<dt id="Dashboard.sliders.setup_interaction_items">
+<code class="sig-prename descclassname">Dashboard.sliders.</code><code class="sig-name descname">setup_interaction_items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.sliders.setup_interaction_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets up the sidebar elements for streamlit
+returns: selected fatigue score and designation range,
+if males or females were selected, selected industry type and selected work setup</p>
+</dd></dl>
+
+<span class="target" id="module-Dashboard.utils"></span><dl class="function">
+<dt id="Dashboard.utils.check_data_format">
+<code class="sig-prename descclassname">Dashboard.utils.</code><code class="sig-name descname">check_data_format</code><span class="sig-paren">(</span><em class="sig-param">train</em><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.utils.check_data_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>checks if the uploaded data has all required columns
+param: train pd.DataFrame
+returns: Bool</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Dashboard.utils.load_data">
+<code class="sig-prename descclassname">Dashboard.utils.</code><code class="sig-name descname">load_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.utils.load_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>loads the data from the data subdirectory</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Dashboard.utils.wrong_data_format_message">
+<code class="sig-prename descclassname">Dashboard.utils.</code><code class="sig-name descname">wrong_data_format_message</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Dashboard.utils.wrong_data_format_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays error message on streamlit when the uploaded file has the incorrect format</p>
 </dd></dl>
 
 </div>

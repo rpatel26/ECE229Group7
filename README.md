@@ -1,5 +1,5 @@
 # ECE229Group7 Project
-This project build a informative interactive dashboard aims to predict, analyze and visualize how stressed employees in a company are, by looking at various metrics such as how long employees have been in the company, their work type, working hours, setups, benefits, etc. 
+This project builds an informative interactive dashboard to predict, analyze and visualize how stressed employees in a company are, by looking at various metrics such as how long employees have been in the company, their work type, working hours, setups, benefits, etc. 
 
 
 ## Table of Contents  
@@ -33,7 +33,7 @@ Additonally, ensure the necessary [dataset](https://www.kaggle.com/blurredmachin
 git clone https://github.com/rpatel26/ECE229Group7.git
 </pre>
 
-2. Install the necessay dependencies:
+2. Install the necessary dependencies:
 #### Using Anaconda
 <pre>
 conda env create -f environment.yml

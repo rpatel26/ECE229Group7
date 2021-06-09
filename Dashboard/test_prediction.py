@@ -13,6 +13,7 @@ cols = ['WFH Setup Available','Designation','Resource Allocation',
             'Mental Fatigue Score']
 xtest = data_encoder(xtest)
 xtest = xtest[cols]
+    
 def test_load_data():
     '''
     pytest for testing load_data function and data_encoder function:
@@ -70,5 +71,5 @@ def test_mitigation_strategies():
     assert x2 == 'Medium'
     assert x3 =='High'
     assert m1 == strategies_low
-    assert m2 == strategies_low
+    assert m2 == strategies_medium
     assert m3 == strategies_high

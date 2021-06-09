@@ -11,6 +11,24 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import plotly.io as pio
 
+def get_corr(data):
+    '''sets up the correlation matrix
+    param: pd.DataFrame
+    returns: pd.DataFrame'''
+    data_corr = data[['Gender', 'Company Type', 'WFH Setup Available', 'Designation',
+                      'Resource Allocation', 'Mental Fatigue Score','Burn Rate']].dropna()
+    data_corr.loc[data_corr['Gender'] == 'Male', 'Gender'] = 0
+    data_corr.loc[data_corr['Gender'] == 'Female', 'Gender'] = 1
+    data_corr.loc[data_corr['Company Type'] == 'Service', 'Company Type'] = 0
+    data_corr.loc[data_corr['Company Type'] == 'Product', 'Company Type'] = 1
+    data_corr.loc[data_corr['WFH Setup Available'] == 'No', 'WFH Setup Available'] = 0
+    data_corr.loc[data_corr['WFH Setup Available'] == 'Yes', 'WFH Setup Available'] = 1
+
+    data_corr[['Gender']] = data_corr[['Gender']].astype(int)
+    data_corr[['Company Type']] = data_corr[['Company Type']].astype(int)
+    data_corr[['WFH Setup Available']] = data_corr[['WFH Setup Available']].astype(int)
+    corrMatrix = data_corr.corr()
+    return corrMatrix
 
 def setup_correlation_plots(data):
     '''sets up bar plots for feature analysis with interactive widgets
@@ -31,20 +49,8 @@ def setup_correlation_plots(data):
              "The value is between -1 to 1 and can be seen when hovered over the respective cell. A positive number means features are positively correlated."
              "A negative number indicates that features are negatively correlated. The larger the absolute "
              "value, the higher their correlation. This is also indicated by the respective color.")
-    data_corr = data[['Gender', 'Company Type', 'WFH Setup Available', 'Designation',
-                      'Resource Allocation', 'Mental Fatigue Score','Burn Rate']].dropna()
-    data_corr.loc[data_corr['Gender'] == 'Male', 'Gender'] = 0
-    data_corr.loc[data_corr['Gender'] == 'Female', 'Gender'] = 1
-    data_corr.loc[data_corr['Company Type'] == 'Service', 'Company Type'] = 0
-    data_corr.loc[data_corr['Company Type'] == 'Product', 'Company Type'] = 1
-    data_corr.loc[data_corr['WFH Setup Available'] == 'No', 'WFH Setup Available'] = 0
-    data_corr.loc[data_corr['WFH Setup Available'] == 'Yes', 'WFH Setup Available'] = 1
-
-    data_corr[['Gender']] = data_corr[['Gender']].astype(int)
-    data_corr[['Company Type']] = data_corr[['Company Type']].astype(int)
-    data_corr[['WFH Setup Available']] = data_corr[['WFH Setup Available']].astype(int)
-    corrMatrix = data_corr.corr()
-
+    
+    corrMatrix = get_corr(data)
 
     hovertext = list()
     for yi, yy in enumerate(corrMatrix.columns):

@@ -12,9 +12,9 @@ This project build a informative interactive dashboard aims to predict, analyze 
 <a  name="prerequisite"/></a>
 ## Prerequisite
 
-To run any of the module in this codebase, ensure the newest version of the [python3](https://www.python.org/downloads/) or the newest version of [Anaconda](https://docs.anaconda.com/anaconda/install/) installed in the machine. Further, ensure the respective binary is in the list of PATH variables. 
+To run any of the module in this codebase, ensure the newest version of [python3](https://www.python.org/downloads/) or the newest version of [Anaconda](https://docs.anaconda.com/anaconda/install/) is installed on the machine. Further, ensure the respective binary is in the list of PATH variables. 
 
-Additonally, ensure the necessay [dataset](https://www.kaggle.com/blurredmachine/are-your-employees-burning-out/download) is downloaded and stored in the **data** directory. Refer to  [Folder Organization](#folder) for details on **data** directory. Note, the **data** directory is NOT part of this repository, it has to manually created. 
+Additonally, ensure the necessary [dataset](https://www.kaggle.com/blurredmachine/are-your-employees-burning-out/download) is downloaded and stored in the **data** directory. Refer to  [Folder Organization](#folder) for details on **data** directory. Note, the **data** directory is NOT part of this repository, it has to manually created. 
 
 <a name="folder"/></a>
 ## Folder Organization
@@ -51,7 +51,7 @@ streamlit run dashboard_setup.py
 </pre>
 
 <a name="data"/></a>
-## About Dataset: 
+## About Dataset
 [Link](https://www.kaggle.com/blurredmachine/are-your-employees-burning-out) to the dataset.
 We use the "Are your Employees Burning out" dataset found on Kaggle. This dataset contains 3 files, a training file, a testing file, and a sample submission file. The training and test files, it provides a mental fatigue score, which is the main attribute that reflects the stress level of employees. Additionally, the dataset provides if the employee works from home or not, company types, employee designation, and resource allocation, as well as the gender of the employee. We will train our model based on the training data and use our test data to validate our model. The dataset consists of 22750 training and 12250 test instances.
 

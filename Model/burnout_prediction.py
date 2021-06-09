@@ -26,12 +26,6 @@ from sklearn.preprocessing import LabelEncoder
 import pickle
 from sklearn.ensemble import GradientBoostingRegressor
 
-
-#from catboost import CatBoostRegressor
-#import category_encoders as ce
-#import xgboost as xgb
-#import lightgbm as lgb
-#from lightgbm import LGBMRegressor
 warnings.filterwarnings('ignore')
 
 
@@ -62,6 +56,7 @@ def get_data():
 def wfh_encoder(data):
     '''
     Function to encode variable "WFH Setup Available" as binary variable
+    param: data pd.DataFrame
     '''
     assert isinstance(data, pd.Series)
 
@@ -71,6 +66,7 @@ def wfh_encoder(data):
 def data_encoder(df):
     '''
     Funtion to transform all categorical features into dummy variables
+    param: df pd.DataFrame
     '''
     assert isinstance(df, pd.DataFrame)
 
@@ -82,6 +78,13 @@ def evalu_model(model, xtrain, xtest, ytrain, ytest):
     '''
     Function to evaluate model performance through cross validation.
     Metrics to evaluate performance: R-sqaured and mean squared error
+
+    param: model
+    param: xtrain pd.DataFrame
+    param: xtest pd.DataFrame
+    param: ytrain pd.DataFrame
+    param: ytest pd.DataFrame
+    returns: tuple r2_train, r2_test, mse_train, mse_test floats 
     '''
     assert isinstance(xtrain, pd.DataFrame)
     assert isinstance(xtest, pd.DataFrame)
@@ -101,6 +104,12 @@ def evalu_model(model, xtrain, xtest, ytrain, ytest):
 def linear_regression(xtrain, xtest, ytrain, ytest):
     '''
     Predict burn rate using linear regression model
+    param: xtrain pd.DataFrame
+    param: xtest pd.DataFrame
+    param: ytrain pd.DataFrame
+    param: ytest pd.DataFrame
+
+    returns: lr classifier 
     '''
     assert isinstance(xtrain, pd.DataFrame)
     assert isinstance(xtest, pd.DataFrame)
@@ -119,16 +128,18 @@ def linear_regression(xtrain, xtest, ytrain, ytest):
     print('====================================')
     for i in fi:
         print(i)
-    # #save model
-    # filename = 'linear_model.sav'
-    # pickle.dump(lr, open(filename, 'wb'))
-    # loaded_model = pickle.load(open(filename, 'rb'))
-    # result = loaded_model.predict(xtest)
     return lr
 
 def tree_model(xtrain, xtest, ytrain, ytest):
     '''
     Predict burout rate using gradient boosting model output both point estimation and predict interval
+
+    param: xtrain pd.DataFrame
+    param: xtest pd.DataFrame
+    param: ytrain pd.DataFrame
+    param: ytest pd.DataFrame
+
+    returns: treemodel classifier
     '''
     assert isinstance(xtrain, pd.DataFrame)
     assert isinstance(xtest, pd.DataFrame)

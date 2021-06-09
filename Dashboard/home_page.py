@@ -1,8 +1,3 @@
-'''
-This file intend to build a dashboard using streamlit to
-provide end user visualization and analysis.
-'''
-
 import streamlit as st
 import pandas as pd
 import numpy as np

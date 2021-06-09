@@ -1,6 +1,6 @@
 import streamlit as st
 
-def setup_sidebar():
+def setup_interaction_items():
     '''sets up the sidebar elements for streamlit
     returns: selected fatigue score and designation range, 
     if males or females were selected, selected industry type and selected work setup'''

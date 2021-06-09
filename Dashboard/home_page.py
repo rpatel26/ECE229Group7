@@ -9,18 +9,11 @@ import numpy as np
 import time
 import plotly.figure_factory as ff
 import matplotlib.pyplot as plt
-
-
-def load_data():
-    '''loads the data from the data subdirectory'''
-    train = pd.read_csv('../data/train.csv')
-    #remove missing values form last three coloms
-    train = train.dropna(subset=['Resource Allocation','Mental Fatigue Score',
-                             'Burn Rate']).reset_index(drop=True)
-    return train 
+from utils import load_data
 
 def make_header():
     '''setup header section and allow user to select/input data file for analysis'''
+
     st.title("Understanding Your Employee's Stress Level")
     st.write('')
     st.subheader('A Web App by [Winter 2021 ECE 229 Group 7](https://github.com/rpatel26/ECE229Group7)')
@@ -28,7 +21,7 @@ def make_header():
     st.image("./Burnout.png", width=None)
     
 def app():
-    '''main function to set up the streamlit application visuals'''
+    '''main function to set up the streamlit application visuals on the home page'''
     
     train = make_header()
     

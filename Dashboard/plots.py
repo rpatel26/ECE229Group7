@@ -4,13 +4,14 @@ import seaborn as sns
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_agg import RendererAgg
 from instructions import * 
-from sidebar import * 
+from sliders import * 
 import pandas as pd
 from utils import * 
 
 
 def data_summary(df):
-    '''set up the data summary section'''
+    '''set up the data summary section
+    param: df pandas DataFrame'''
 
     assert isinstance(df, pd.DataFrame)
 
@@ -87,45 +88,10 @@ def setup_distribution_plot(train, fatigue_score, gender_options, designation, c
     f.update_yaxes(title='Number of Instances')
     st.write("Please use the sliders in the sidebar to adapt the following plot.")
     st.plotly_chart(f)
-    
-def features_plot(df):
-
-    assert isinstance(df, pd.DataFrame)
-
-    _lock = RendererAgg.lock
-    st.write('')
-    row0_spacer1, row0_1, row0_spacer2, row0_2, row0_spacer3 = st.beta_columns(
-    (.1, 2, .2, 1, .1))
-    row3_space1, row3_1, row3_space2, row3_2, row3_space3 = st.beta_columns(
-    (.1, 1, .1, 1, .1))
-  
-    with row3_1, _lock:
-        
-        df_2 = df.groupby('Designation')['Mental Fatigue Score'].mean()
-    
-        st.subheader('Designation')
-        fig = Figure(figsize=(5, 3), dpi=60)
-        ax = fig.subplots()
-        sns.barplot(df_2.index,
-                    df_2.values, color='skyblue', ax=ax)
-        ax.set_xlabel('Designation')
-        ax.set_ylabel('Average Mental Fatigue Score')
-        st.pyplot(fig)
-
-
-
-    with row3_2, _lock:
-        df_2 = df.groupby('Resource Allocation')['Mental Fatigue Score'].mean()
-        st.subheader("Resource Allocation")
-        fig = Figure(figsize=(5, 3), dpi=60)
-        ax = fig.subplots()
-        sns.barplot(df_2.index,
-                    df_2.values, color='skyblue', ax=ax)
-        ax.set_xlabel('Resource Allocation')
-        ax.set_ylabel('Average Mental Fatigue Score')
-        st.pyplot(fig)
 
 def app():
+    '''Build function for multi page streamlit aaplication - exploration section
+    loads the data, sets up UI explanations and deals with file uploads'''
     train = load_data()
     setup_instruction_section_exploration()
 
@@ -147,8 +113,5 @@ def app():
     df = df.rename(columns = {'Mental Fatigue Score': 'fatigue'}, inplace = False)
 
 
-    fatigue_score, gender_options, designation, company_options, wfh_options = setup_sidebar()
+    fatigue_score, gender_options, designation, company_options, wfh_options = setup_interaction_items()
     setup_distribution_plot(train, fatigue_score, gender_options, designation, company_options, wfh_options)
-
-    #st.write("## Average Mental Fatigue Score by Gender")
-    #setup_male_female_avg_plot(train)

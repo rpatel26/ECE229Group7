@@ -26,7 +26,6 @@ def get_user_input():
     else:
         wfh = 0
 
-    #user_id = st.text_input("User ID")
     st.write('2. Designation of the employee of work in the organization (bigger is higher designation)')
     designation = st.slider(" Designation", 0, 5)
     st.write('3. Amount of resource allocated to the employee to work, ie. number of working hours. (higher means more resource)')
@@ -44,6 +43,9 @@ def get_user_input():
         return res
 
 def wfh_encoder(data):
+    '''Encodes the WFH setup to Binary
+    param: data pandas Dataframe with column "WFH Setup Available" 
+    returns: Bool'''
     assert isinstance(data, pd.Series)
 
     if data["WFH Setup Available"] == "Yes":
@@ -51,6 +53,10 @@ def wfh_encoder(data):
     return 0
 
 def data_encoder(df):
+    '''Applies binary encoding to entire dataframe
+    param: data pandas Dataframe with column "WFH Setup Available
+    returns: encoded pd.DataFrame with binary encoded categorical variables
+    '''
     assert isinstance(df, pd.DataFrame)
 
     df["WFH Setup Available"] = df.apply(wfh_encoder, axis=1)
@@ -60,6 +66,9 @@ def data_encoder(df):
 def predict(xtest,res):
     '''
     predict burnout rate using user input data
+    param: xtest pd.DataFrame
+    param: res pd.DataFrame
+    returns: pd.DataFrame
     '''
 
     assert isinstance(xtest, pd.DataFrame)
@@ -78,6 +87,7 @@ def predict(xtest,res):
     return res
 
 def app():
+    '''Application function for the prediction section - sets up instructions, model and handles file uploads'''
 
     setup_instruction_section_prediction()
 
@@ -123,7 +133,7 @@ def app():
 def get_mitigation_strategies(burnout_score):
     '''decides on mitigation strategy strings to be shown for a particular burnout score
     param: burnout_score float
-    returns (string, string) categorical score of burnout and mitigation strategies '''
+    returns: (string, string) categorical score of burnout and mitigation strategies '''
 
     assert isinstance(burnout_score, (int, float))
 
@@ -147,6 +157,11 @@ def download_link(object_to_download, download_filename, download_link_text):
     Examples:
     download_link(YOUR_DF, 'YOUR_DF.csv', 'Click here to download data!')
     download_link(YOUR_STRING, 'YOUR_STRING.txt', 'Click here to download your text!')
+
+    param: object_to_download pd.DataFrame
+    param: download_filename String
+    param: download_link_text String
+    returns: HTML String  
 
     """
 

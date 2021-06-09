@@ -10,37 +10,12 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import plotly.io as pio
-    
-def get_correlations(train_data, dependent_variable="Mental Fatigue Score", method='pearson'):
-    '''calculates the feature importance for the dependent variables
-    param: train_data pandas dataframe
-    param: dependent_variable string indicating the column name of the dependent variable
-    method: string indicating the correlation calculation method. Needs to be one of {pearson, spearman, kendall}
-    '''
 
-    assert isinstance(train_data, pd.DataFrame)
-    assert isinstance(dependent_variable, str)
-    assert isinstance(method, str)
-
-    train_data.drop("Employee ID", inplace=True, axis=1)
-    result = dict()
-    result['continuous'] = dict()
-    result['categorical'] = dict()
-    for x in train_data.columns:
-        if train_data[x].dtype != str and train_data[x].dtype != object:
-            result['continuous'][x] = train_data[x].corr(train_data[dependent_variable], method=method)
-        else:
-            df_sub = train_data[[x, dependent_variable]].dropna()
-            data = [x for _, x in df_sub.groupby(by=x)[dependent_variable]]
-            result['categorical'][x] = tuple(stats.f_oneway(*data))
-
-    return result
 
 def setup_correlation_plots(data):
     '''sets up bar plots for feature analysis with interactive widgets
     param: data pandas dataframe
     '''
-
     assert isinstance(data, pd.DataFrame)
 
     st.write('## Confusion Matrix')
@@ -90,17 +65,12 @@ def setup_correlation_plots(data):
         zmax=1
     )
     fig.add_trace(f, row=1, col=1)
-
-
-    #fig, ax = plt.subplots()
-    #ax = sn.heatmap(corrMatrix, annot=True)
     st.plotly_chart(fig)
 
 
-
-
-
 def app():
+    '''Build function for multi page streamlit aaplication - feature analysis section
+    loads the data, sets up the instruction section and correlation plots'''
     train = load_data()
     setup_instruction_section_feature_analysis()
     setup_correlation_plots(train)

@@ -11,8 +11,6 @@ def setup_instruction_section_feature_analysis():
     '''This function sets up visual explanations on how to use our provided dashboard in the prediction section.'''
     st.write("""
     # 2. Feature Analysis""")
-    #We provide an interactive section for you to compare the importance of different different features.
-    #We use a correlation coefficient for continuous variables and a one-way ANOVA for categorical variables.
 
 
 def setup_instruction_section_prediction():

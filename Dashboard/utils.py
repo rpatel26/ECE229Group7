@@ -9,6 +9,9 @@ def load_data():
     return train 
 
 def check_data_format(train):
+    '''checks if the uploaded data has all required columns
+    param: train pd.DataFrame
+    returns: Bool '''
     assert isinstance(train, pd.DataFrame)
     required_cols = ['Employee ID',	'Date of Joining','Gender','Company Type','WFH Setup Available',
     'Designation','Resource Allocation','Mental Fatigue Score']
@@ -20,4 +23,5 @@ def check_data_format(train):
     return True
 
 def wrong_data_format_message():
+    '''Displays error message on streamlit when the uploaded file has the incorrect format'''
     st.error("Wrong data format. Please make sure your data contains columns Employee ID, Date of Joining, Gender, Company Type, WFH Setup Available, Designation, Resource Allocation and Mental Fatigue Score. Fall back to sample data.")

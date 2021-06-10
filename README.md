@@ -7,6 +7,9 @@ This project builds an informative interactive dashboard to predict, analyze and
 2. [Folder Organization](#folder)
 3. [How to Run Code](#run)
 4. [About Dataset](#data)
+5. [Testing](#test)
+6. [Documentation](#doc)
+
 
 
 <a  name="prerequisite"/></a>
@@ -55,3 +58,15 @@ streamlit run dashboard_setup.py
 [Link](https://www.kaggle.com/blurredmachine/are-your-employees-burning-out) to the dataset.
 We use the "Are your Employees Burning out" dataset found on Kaggle. This dataset contains 3 files, a training file, a testing file, and a sample submission file. The training and test files, it provides a mental fatigue score, which is the main attribute that reflects the stress level of employees. Additionally, the dataset provides if the employee works from home or not, company types, employee designation, and resource allocation, as well as the gender of the employee. We will train our model based on the training data and use our test data to validate our model. The dataset consists of 22750 training and 12250 test instances.
 
+<a name="test"/></a>
+## Code Testing
+We use pytest to create a test suite (coverage > 80%) for our project codes. To run pytest, you will need to navigate to ./Dashboard or ./Model and type the following command
+
+<pre>
+pytest
+</pre>
+
+
+<a name="doc"/></a>
+## Documentation
+We use Sphinx to create a documentation static website as an ongoing part of development. Open ./docs/_build/html/index.html file in web browser to see the docs.

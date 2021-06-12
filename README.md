@@ -46,7 +46,12 @@ conda env create -f environment.yml
 pip install -r requirements.txt
 </pre>
 
-3. Install the necessary [dataset](https://www.kaggle.com/blurredmachine/are-your-employees-burning-out/download) and place it into the **data** directory. 
+3. Install the necessary [dataset](https://www.kaggle.com/blurredmachine/are-your-employees-burning-out/download) 
+
+```
+mkdir data
+```
+and place unzipped dataset(3 csv files) into the **data** directory. 
 
 4. To run the dashboard, you will need to navigate to ./Dashboard directory and type the following command
 <pre>
@@ -60,7 +65,7 @@ We use the "Are your Employees Burning out" dataset found on Kaggle. This datase
 
 <a name="test"/></a>
 ## Code Testing
-We use pytest to create a test suite (coverage > 80%) for our project codes. To run pytest, you will need to navigate to ./Dashboard or ./Model and type the following command
+We use pytest to create a test suite (coverage > 80%) for our project codes. To run pytest, you will need to navigate to **./Dashboard** or **./Model** and type the following command
 
 <pre>
 pytest
@@ -69,4 +74,4 @@ pytest
 
 <a name="doc"/></a>
 ## Documentation
-We use Sphinx to create a documentation static website as an ongoing part of development. Open ./docs/_build/html/index.html file in web browser to see the docs.
+We use Sphinx to create a documentation static website as an ongoing part of development. Open **./docs/_build/html/index.html** file in web browser to see the docs.
